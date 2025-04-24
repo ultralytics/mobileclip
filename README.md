@@ -134,7 +134,7 @@ Compare with other models using the [OpenCLIP Results CSV](https://github.com/ml
 
 If you find this code useful, please cite:
 
-```
+```bibtex
 @InProceedings{mobileclip2024,
   author = {Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, Oncel Tuzel},
   title = {MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training},
