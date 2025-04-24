@@ -42,7 +42,7 @@ pip install -e .
 To download pretrained checkpoints:
 
 ```bash
-source get_pretrained_models.sh  # Downloads files to the `checkpoints` directory.
+source get_pretrained_models.sh # Downloads files to the `checkpoints` directory.
 ```
 
 ### Usage Example
@@ -52,6 +52,7 @@ To use models from the official repository:
 ```python
 import torch
 from PIL import Image
+
 import mobileclip
 
 model, _, preprocess = mobileclip.create_model_and_transforms("mobileclip_s0", pretrained="/path/to/mobileclip_s0.pt")
@@ -89,6 +90,7 @@ Example inference:
 
 ```python
 import open_clip
+
 from mobileclip.modules.common.mobileone import reparameterize_model
 
 model, _, preprocess = open_clip.create_model_and_transforms("MobileCLIP-S2", pretrained="datacompdr")
@@ -102,6 +104,7 @@ model = reparameterize_model(model)
 ```
 
 Available variants on OpenCLIP:
+
 - MobileCLIP-S1 (`datacompdr`)
 - MobileCLIP-S2 (`datacompdr`)
 - MobileCLIP-B (`datacompdr`)

@@ -6,7 +6,7 @@ This repository was initially released to accompany a research paper and promote
 
 ## Getting Started With Contributions
 
-- By submitting a pull request, you confirm that you have the right to license your contribution to Apple and the community.  
+- By submitting a pull request, you confirm that you have the right to license your contribution to Apple and the community.
 - All contributions are licensed under the [LICENSE](LICENSE).
 - Please review and follow our [Code of Conduct](CODE_OF_CONDUCT.md) to help maintain a welcoming and respectful environment.
 
