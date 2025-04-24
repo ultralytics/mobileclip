@@ -247,7 +247,9 @@ class MultiHeadAttention(nn.Module):
                 batch_size,
                 num_src_tokens,
                 num_tgt_tokens,
-            ], f"Shape of attention mask should be [{batch_size}, {num_src_tokens}, {num_tgt_tokens}]. Got: {attn_mask.shape}"
+            ], (
+                f"Shape of attention mask should be [{batch_size}, {num_src_tokens}, {num_tgt_tokens}]. Got: {attn_mask.shape}"
+            )
             # [N, S, T] --> [N, 1, S, T]
             attn_mask = attn_mask.unsqueeze(1)
             attn = attn + attn_mask
@@ -258,7 +260,9 @@ class MultiHeadAttention(nn.Module):
             assert key_padding_mask.dim() == 2 and list(key_padding_mask.shape) == [
                 batch_size,
                 num_tgt_tokens,
-            ], f"Key_padding_mask should be 2-dimension with shape [{batch_size}, {num_tgt_tokens}]. Got: {key_padding_mask.shape}"
+            ], (
+                f"Key_padding_mask should be 2-dimension with shape [{batch_size}, {num_tgt_tokens}]. Got: {key_padding_mask.shape}"
+            )
             attn = attn.masked_fill(
                 key_padding_mask.unsqueeze(1).unsqueeze(2).to(torch.bool),  # [N, T] --> [N, 1, 1, T]
                 float("-inf"),
