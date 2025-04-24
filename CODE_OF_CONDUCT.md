@@ -1,8 +1,3 @@
----
-description: Ultralytics Code of Conduct outlining standards for a welcoming, inclusive, and respectful open source community.
-keywords: Ultralytics, code of conduct, open source, community standards, inclusivity, behavior, enforcement
----
-
 # Code Of Conduct
 
 ## Our Pledge
