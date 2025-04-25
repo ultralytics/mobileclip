@@ -35,12 +35,19 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 
-# Package dependencies from requirements.txt
+# Core package dependencies
 dependencies = [
-    "clip-benchmark>=1.4.0",  # Benchmarking tools for CLIP models
-    "datasets",               # Hugging Face datasets library
     "open-clip-torch>=2.20.0", # Open-source implementation of CLIP
     "timm>=0.9.5",            # PyTorch Image Models
+]
+
+# Optional dependencies in separate groups
+[
+project.optional-dependencies
+]
+full = [
+    "clip-benchmark>=1.4.0",  # Benchmarking tools for CLIP models
+    "datasets",               # Hugging Face datasets library
     "torch>=2.1.0",           # PyTorch deep learning framework
     "torchvision>=0.16.0"     # Computer vision library for PyTorch
 ]
