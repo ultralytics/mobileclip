@@ -41,10 +41,7 @@ dependencies = [
     "timm>=0.9.5",            # PyTorch Image Models
 ]
 
-# Optional dependencies in separate groups
-[
-project.optional-dependencies
-]
+[project.optional-dependencies]
 full = [
     "clip-benchmark>=1.4.0",  # Benchmarking tools for CLIP models
     "datasets",               # Hugging Face datasets library
