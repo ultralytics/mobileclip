@@ -11,10 +11,7 @@ name = "mobileclip"
 version = "0.1.0"
 description = "MobileCLIP"
 authors = [
-    {name = ""}
-]
-maintainers = [
-    {email = ""}
+    {name = "Apple"}
 ]
 readme = "README.md"  # Points to README.md for long description
 requires-python = ">=3.8"  # Supports Python>=3.8
