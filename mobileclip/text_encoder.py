@@ -131,7 +131,7 @@ class TextTransformer(nn.Module):
             token_emb = token_emb + self.positional_embedding(seq_len).to(token_emb.dtype)
         token_emb = self.embedding_dropout(token_emb)
         return token_emb
-    
+
     @staticmethod
     @torch.jit.script  # use scripting to avoid device constant
     def build_attention_mask(text_tokens: torch.Tensor) -> Tensor:
