@@ -169,7 +169,7 @@ class TextTransformer(nn.Module):
         """
         # Discrete tokens to continuous embeddings
         # [batch_size, context_length] --> [batch_size, context_length, hidden_dim]
-        token_emb = self.forward_embedding(text_tokens=text_tokens)
+        token_emb = self.forward_embedding(text_tokens)
 
         # [1, context_length, context_length]
         attn_mask = None
