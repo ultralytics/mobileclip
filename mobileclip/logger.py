@@ -1,3 +1,5 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
@@ -65,12 +67,10 @@ def warning(message: Union[str, Warning]) -> None:
 
 def ignore_exception_with_warning(message: str) -> None:
     """
-    After catching a tolerable exception E1 (e.g. when Model.forward() fails during
-    profiling with try-catch, it'll be helpful to log the exception for future
-    investigation. But printing the error stack trace, as is, could be confusing
-    when an uncaught (non-tolerable) exception "E2" raises down the road. Then, the log
-    will contain two stack traces for E1, E2. When looking for errors in logs, users
-    should look for E2, but they may find E1.
+    After catching a tolerable exception E1 (e.g. when Model.forward() fails during profiling with try-catch, it'll be
+    helpful to log the exception for future investigation. But printing the error stack trace, as is, could be confusing
+    when an uncaught (non-tolerable) exception "E2" raises down the road. Then, the log will contain two stack traces
+    for E1, E2. When looking for errors in logs, users should look for E2, but they may find E1.
 
     This function appends "(WARNING)" at the end of all lines of the E1 traceback, so
     that the user can distinguish E1 from uncaught exception E2.

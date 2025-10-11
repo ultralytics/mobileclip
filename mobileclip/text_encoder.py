@@ -1,9 +1,12 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
 import math
-from typing import Optional, Sequence
+from collections.abc import Sequence
+from typing import Optional
 
 import torch
 from torch import Tensor, nn
@@ -116,7 +119,8 @@ class TextTransformer(nn.Module):
         self.causal_masking = cfg["causal_masking"]
 
     def forward_embedding(self, text_tokens: Tensor) -> Tensor:
-        """Return text embedding for all tokens.
+        """
+        Return text embedding for all tokens.
 
         Args:
             text_tokens: a tensor of token indices. Shape: [batch_size, context_length]
@@ -154,7 +158,8 @@ class TextTransformer(nn.Module):
         *args,
         **kwargs,
     ) -> Tensor:
-        """Return text token embeddings.
+        """
+        Return text token embeddings.
 
         Args:
             text_tokens: a tensor of token indices. Shape: [batch_size, context_length]
