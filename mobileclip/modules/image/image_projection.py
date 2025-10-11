@@ -1,8 +1,10 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
-from typing import List, Optional
+from typing import Optional
 
 import torch
 import torch.nn as nn
@@ -33,7 +35,7 @@ class GlobalPool(nn.Module):
         self.pool_type = pool_type
         self.keep_dim = keep_dim
 
-    def _global_pool(self, x: Tensor, dims: List):
+    def _global_pool(self, x: Tensor, dims: list):
         if self.pool_type == "rms":  # root mean square
             x = x**2
             x = torch.mean(x, dim=dims, keepdim=self.keep_dim)

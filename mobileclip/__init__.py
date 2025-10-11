@@ -1,3 +1,5 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
@@ -28,7 +30,7 @@ def create_model_and_transforms(
     pretrained: Optional[str] = None,
     reparameterize: Optional[bool] = True,
     device: Union[str, torch.device] = "cpu",
-) -> Tuple[nn.Module, Any, Any]:
+) -> tuple[nn.Module, Any, Any]:
     """
     Method to instantiate model and pre-processing transforms necessary for inference.
 

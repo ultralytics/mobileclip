@@ -1,3 +1,5 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
@@ -10,7 +12,7 @@ https://github.com/apple/ml-cvnets/blob/main/cvnets/text_encoders/transformer.py
 Please see ACKNOWLEDGEMENTS for license details.
 """
 
-from typing import List, Optional, Union
+from typing import Optional, Union
 
 import torch
 from torch import Size, Tensor, nn
@@ -25,7 +27,7 @@ class LayerNormFP32(nn.LayerNorm):
 
     def __init__(
         self,
-        normalized_shape: Union[int, List[int], Size],
+        normalized_shape: Union[int, list[int], Size],
         eps: Optional[float] = 1e-5,
         elementwise_affine: Optional[bool] = True,
         *args,

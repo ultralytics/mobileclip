@@ -1,3 +1,5 @@
+// Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 //
 // For licensing see accompanying LICENSE file.
 // Copyright (C) 2024 Apple Inc. All Rights Reserved.
@@ -240,7 +242,7 @@ struct InferenceView: View {
             // detach from the camera controller and feed to the video view
             await MainActor.run {
                 self.framesToDisplay = nil
-                self.camera.detatch()
+                self.camera.detach()
             }
 
             framesToClassifyContinuation.finish()

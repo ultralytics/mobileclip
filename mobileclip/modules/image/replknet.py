@@ -1,8 +1,9 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For acknowledgement see accompanying ACKNOWLEDGEMENTS file.
 # Copyright (C) 2024 Apple Inc. All rights reserved.
 #
-from typing import Tuple
 
 import torch
 import torch.nn as nn
@@ -12,7 +13,8 @@ __all__ = ["ReparamLargeKernelConv"]
 
 
 class ReparamLargeKernelConv(nn.Module):
-    """Building Block of RepLKNet.
+    """
+    Building Block of RepLKNet.
 
     This class defines overparameterized large kernel conv block
     introduced in `RepLKNet <https://arxiv.org/abs/2203.06717>`_
@@ -32,7 +34,8 @@ class ReparamLargeKernelConv(nn.Module):
         use_se: bool = False,
         activation: nn.Module = nn.GELU(),
     ) -> None:
-        """Construct a ReparamLargeKernelConv module.
+        """
+        Construct a ReparamLargeKernelConv module.
 
         Args:
             in_channels: Number of input channels.
@@ -92,7 +95,7 @@ class ReparamLargeKernelConv(nn.Module):
 
         return self.activation(self.se(out))
 
-    def get_kernel_bias(self) -> Tuple[torch.Tensor, torch.Tensor]:
+    def get_kernel_bias(self) -> tuple[torch.Tensor, torch.Tensor]:
         """Method to obtain re-parameterized kernel and bias.
         Reference: https://github.com/DingXiaoH/RepLKNet-pytorch.
 
@@ -132,8 +135,9 @@ class ReparamLargeKernelConv(nn.Module):
             self.__delattr__("small_conv")
 
     @staticmethod
-    def _fuse_bn(conv: torch.Tensor, bn: nn.BatchNorm2d) -> Tuple[torch.Tensor, torch.Tensor]:
-        """Method to fuse batchnorm layer with conv layer.
+    def _fuse_bn(conv: torch.Tensor, bn: nn.BatchNorm2d) -> tuple[torch.Tensor, torch.Tensor]:
+        """
+        Method to fuse batchnorm layer with conv layer.
 
         Args:
             conv: Convolutional kernel weights.
@@ -153,7 +157,8 @@ class ReparamLargeKernelConv(nn.Module):
         return kernel * t, beta - running_mean * gamma / std
 
     def _conv_bn(self, kernel_size: int, padding: int = 0) -> nn.Sequential:
-        """Helper method to construct conv-batchnorm layers.
+        """
+        Helper method to construct conv-batchnorm layers.
 
         Args:
             kernel_size: Size of the convolution kernel.
