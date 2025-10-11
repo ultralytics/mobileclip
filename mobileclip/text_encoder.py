@@ -136,11 +136,14 @@ class TextTransformer(nn.Module):
         token_emb = self.embedding_dropout(token_emb)
         return token_emb
 
-    def build_attention_mask(self, context_length: int, batch_size: int) -> Tensor:
+    @staticmethod
+    @torch.jit.script  # use scripting to avoid device constant
+    def build_attention_mask(text_tokens: torch.Tensor) -> Tensor:
         """Build causal attention mask [batch_size, context_length, context_length]."""
         # Build mask with full attention between the tokens
         # pytorch uses additive attention mask; fill with -inf
-        mask = torch.empty(context_length, context_length)
+        batch_size, context_length = text_tokens.shape
+        mask = torch.empty(context_length, context_length, device=text_tokens.device, dtype=torch.float32)
         mask.fill_(float("-inf"))
         mask.triu_(1)  # zero out the lower diagonal
         mask = mask.unsqueeze(0)  # add dummy batch dimension
@@ -176,8 +179,7 @@ class TextTransformer(nn.Module):
         # [1, context_length, context_length]
         attn_mask = None
         if self.causal_masking:
-            attn_mask = self.build_attention_mask(context_length=text_tokens.shape[1], batch_size=text_tokens.shape[0])
-            attn_mask = attn_mask.to(device=token_emb.device, dtype=token_emb.dtype)
+            attn_mask = self.build_attention_mask(text_tokens=text_tokens)
             key_padding_mask = None
 
         for layer in self.transformer:
