@@ -1,3 +1,5 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
@@ -9,7 +11,7 @@ https://github.com/apple/ml-cvnets/blob/main/cvnets/models/classification/vit.py
 Please see ACKNOWLEDGEMENTS for license details.
 """
 
-from typing import Dict, Optional, Tuple, Union
+from typing import Optional, Union
 
 import numpy as np
 import torch
@@ -67,13 +69,13 @@ class ConvNormAct(nn.Module):
 
     def __init__(
         self,
-        cfg: Dict,
+        cfg: dict,
         in_channels: int,
         out_channels: int,
-        kernel_size: Union[int, Tuple[int, ...]],
-        stride: Union[int, Tuple[int, ...]] = 1,
-        dilation: Union[int, Tuple[int, ...]] = 1,
-        padding: Optional[Union[int, Tuple[int, ...]]] = None,
+        kernel_size: Union[int, tuple[int, ...]],
+        stride: Union[int, tuple[int, ...]] = 1,
+        dilation: Union[int, tuple[int, ...]] = 1,
+        padding: Optional[Union[int, tuple[int, ...]]] = None,
         groups: int = 1,
         bias: bool = False,
         padding_mode: str = "zeros",
@@ -116,9 +118,9 @@ class ConvNormAct(nn.Module):
         if isinstance(dilation, int):
             dilation = (dilation,) * self.ndim
 
-        assert isinstance(kernel_size, Tuple)
-        assert isinstance(stride, Tuple)
-        assert isinstance(dilation, Tuple)
+        assert isinstance(kernel_size, tuple)
+        assert isinstance(stride, tuple)
+        assert isinstance(dilation, tuple)
 
         if padding is None:
             padding = (int((kernel_size[i] - 1) / 2) * dilation[i] for i in range(self.ndim))
@@ -283,7 +285,7 @@ class VisionTransformer(nn.Module):
         )
         self.emb_dropout = nn.Dropout(p=pos_emb_drop_p)
 
-    def extract_patch_embeddings(self, x: Tensor) -> Tuple[Tensor, Tuple[int, int]]:
+    def extract_patch_embeddings(self, x: Tensor) -> tuple[Tensor, tuple[int, int]]:
         # input is of shape [Batch, in_channels, height, width]. in_channels is mostly 3 (for RGB images)
         batch_size = x.shape[0]
 
@@ -314,7 +316,7 @@ class VisionTransformer(nn.Module):
         patch_emb = self.emb_dropout(patch_emb)
         return patch_emb, (n_h, n_w)
 
-    def _features_from_transformer(self, x: Tensor, *args, **kwargs) -> Tuple[Tensor, Tuple[int, int]]:
+    def _features_from_transformer(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, tuple[int, int]]:
         # this function extract patch embeddings and then apply transformer module to learn
         # inter-patch representations
 
@@ -328,7 +330,7 @@ class VisionTransformer(nn.Module):
 
         return x, (n_h, n_w)
 
-    def extract_features(self, x: Tensor, *args, **kwargs) -> Tuple[Tensor, Optional[Tensor]]:
+    def extract_features(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, Optional[Tensor]]:
         # The extract_features function for ViT returns two outputs: (1) embedding corresponding to CLS token
         # and (2) image embeddings of the shape [B, C, h//o, w//o], where the value of o is typically 16.
         return_image_embeddings = kwargs.get("return_image_embeddings", False)
@@ -361,13 +363,13 @@ class VisionTransformer(nn.Module):
         else:
             return cls_embedding, None
 
-    def forward_classifier(self, x: Tensor, *args, **kwargs) -> Tuple[Tensor, Tensor]:
+    def forward_classifier(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, Tensor]:
         cls_embedding, image_embedding = self.extract_features(x, *args, **kwargs)
         # classify based on CLS token
         cls_embedding = self.classifier(cls_embedding)
         return cls_embedding, image_embedding
 
-    def forward(self, x: Tensor, *args, **kwargs) -> Union[Tensor, Dict[str, Tensor]]:
+    def forward(self, x: Tensor, *args, **kwargs) -> Union[Tensor, dict[str, Tensor]]:
         # In ViT model, we can return either classifier embeddings (logits) or image embeddings or both.
         # To return the image embeddings, we need to set keyword argument (return_image_embeddings) as True.
         if kwargs.get("return_image_embeddings", False):

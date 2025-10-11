@@ -1,3 +1,5 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
@@ -5,7 +7,7 @@
 """Model schema in open_clip format for inference only."""
 
 import math
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 
 import torch
 import torch.nn.functional as F
@@ -21,7 +23,7 @@ from .image_encoder import MCi
 class CLIP(nn.Module):
     """Base class for multi-modal image-text data."""
 
-    def __init__(self, cfg: Dict, output_dict: bool = False, *args, **kwargs) -> None:
+    def __init__(self, cfg: dict, output_dict: bool = False, *args, **kwargs) -> None:
         super().__init__()
         self.output_dict = output_dict
         self.projection_dim = cfg["embed_dim"]

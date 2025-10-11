@@ -1,8 +1,9 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
-from typing import Dict
 
 import open_clip
 from torch import Tensor, nn
@@ -18,7 +19,7 @@ class ClipTokenizer(nn.Module):
     def get_vocab_size(self) -> int:
         return len(self.tokenizer.encoder)
 
-    def get_encodings(self) -> Dict[str, int]:
+    def get_encodings(self) -> dict[str, int]:
         return self.tokenizer.encoder
 
     def get_eot_token(self) -> int:

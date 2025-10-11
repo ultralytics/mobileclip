@@ -1,9 +1,11 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
 import copy
-from typing import Tuple, Union
+from typing import Union
 
 import torch
 import torch.nn as nn
@@ -13,14 +15,16 @@ __all__ = ["MobileOneBlock", "reparameterize_model"]
 
 
 class SEBlock(nn.Module):
-    """Squeeze and Excite module.
+    """
+    Squeeze and Excite module.
 
     Pytorch implementation of `Squeeze-and-Excitation Networks` -
     https://arxiv.org/pdf/1709.01507.pdf
     """
 
     def __init__(self, in_channels: int, rd_ratio: float = 0.0625) -> None:
-        """Construct a Squeeze and Excite Module.
+        """
+        Construct a Squeeze and Excite Module.
 
         Args:
             in_channels: Number of input channels.
@@ -55,12 +59,11 @@ class SEBlock(nn.Module):
 
 
 class MobileOneBlock(nn.Module):
-    """MobileOne building block.
+    """
+    MobileOne building block.
 
-    This block has a multi-branched architecture at train-time
-    and plain-CNN style architecture at inference time
-    For more details, please refer to our paper:
-    `An Improved One millisecond Mobile Backbone` -
+    This block has a multi-branched architecture at train-time and plain-CNN style architecture at inference time For
+    more details, please refer to our paper: `An Improved One millisecond Mobile Backbone` -
     https://arxiv.org/pdf/2206.04040.pdf
     """
 
@@ -80,7 +83,8 @@ class MobileOneBlock(nn.Module):
         num_conv_branches: int = 1,
         activation: nn.Module = nn.GELU(),
     ) -> None:
-        """Construct a MobileOneBlock module.
+        """
+        Construct a MobileOneBlock module.
 
         Args:
             in_channels: Number of channels in the input.
@@ -208,7 +212,7 @@ class MobileOneBlock(nn.Module):
 
         self.inference_mode = True
 
-    def _get_kernel_bias(self) -> Tuple[torch.Tensor, torch.Tensor]:
+    def _get_kernel_bias(self) -> tuple[torch.Tensor, torch.Tensor]:
         """Method to obtain re-parameterized kernel and bias.
         Reference: https://github.com/DingXiaoH/RepVGG/blob/main/repvgg.py#L83.
 
@@ -243,7 +247,7 @@ class MobileOneBlock(nn.Module):
         bias_final = bias_conv + bias_scale + bias_identity
         return kernel_final, bias_final
 
-    def _fuse_bn_tensor(self, branch: Union[nn.Sequential, nn.BatchNorm2d]) -> Tuple[torch.Tensor, torch.Tensor]:
+    def _fuse_bn_tensor(self, branch: Union[nn.Sequential, nn.BatchNorm2d]) -> tuple[torch.Tensor, torch.Tensor]:
         """Method to fuse batchnorm layer with preceeding conv layer.
         Reference: https://github.com/DingXiaoH/RepVGG/blob/main/repvgg.py#L95.
 
@@ -288,7 +292,8 @@ class MobileOneBlock(nn.Module):
         return kernel * t, beta - running_mean * gamma / std
 
     def _conv_bn(self, kernel_size: int, padding: int) -> nn.Sequential:
-        """Helper method to construct conv-batchnorm layers.
+        """
+        Helper method to construct conv-batchnorm layers.
 
         Args:
             kernel_size: Size of the convolution kernel.
@@ -315,9 +320,9 @@ class MobileOneBlock(nn.Module):
 
 
 def reparameterize_model(model: torch.nn.Module) -> nn.Module:
-    """Method returns a model where a multi-branched structure
-        used in training is re-parameterized into a single branch
-        for inference.
+    """
+    Method returns a model where a multi-branched structure used in training is re-parameterized into a single branch
+    for inference.
 
     Args:
         model: MobileOne model in train mode.

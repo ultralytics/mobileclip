@@ -1,10 +1,12 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
 import copy
 from functools import partial
-from typing import List, Optional, Tuple, Union
+from typing import Optional, Union
 
 import torch
 import torch.nn as nn
@@ -39,7 +41,8 @@ default_cfgs = {
 
 
 def convolutional_stem(in_channels: int, out_channels: int, inference_mode: bool = False) -> nn.Sequential:
-    """Build convolutional stem with MobileOne blocks.
+    """
+    Build convolutional stem with MobileOne blocks.
 
     Args:
         in_channels: Number of input channels.
@@ -87,7 +90,8 @@ def convolutional_stem(in_channels: int, out_channels: int, inference_mode: bool
 
 
 class MHSA(nn.Module):
-    """Multi-headed Self Attention module.
+    """
+    Multi-headed Self Attention module.
 
     Source modified from:
     https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
@@ -101,7 +105,8 @@ class MHSA(nn.Module):
         attn_drop: float = 0.0,
         proj_drop: float = 0.0,
     ) -> None:
-        """Build MHSA module that can handle 3D or 4D input tensors.
+        """
+        Build MHSA module that can handle 3D or 4D input tensors.
 
         Args:
             dim: Number of embedding dimensions.
@@ -156,7 +161,8 @@ class PatchEmbed(nn.Module):
         inference_mode: bool = False,
         use_se: bool = False,
     ) -> None:
-        """Build patch embedding layer.
+        """
+        Build patch embedding layer.
 
         Args:
             patch_size: Patch size for embedding computation.
@@ -201,7 +207,8 @@ class PatchEmbed(nn.Module):
 
 
 class RepMixer(nn.Module):
-    """Reparameterizable token mixer.
+    """
+    Reparameterizable token mixer.
 
     For more details, please refer to our paper:
     `FastViT: A Fast Hybrid Vision Transformer using Structural Reparameterization <https://arxiv.org/pdf/2303.14189.pdf>`_
@@ -215,7 +222,8 @@ class RepMixer(nn.Module):
         layer_scale_init_value=1e-5,
         inference_mode: bool = False,
     ):
-        """Build RepMixer Module.
+        """
+        Build RepMixer Module.
 
         Args:
             dim: Input feature map dimension. :math:`C_{in}` from an expected input of size :math:`(B, C_{in}, H, W)`.
@@ -274,9 +282,7 @@ class RepMixer(nn.Module):
             return x
 
     def reparameterize(self) -> None:
-        """Reparameterize mixer and norm into a single
-        convolutional layer for efficient inference.
-        """
+        """Reparameterize mixer and norm into a single convolutional layer for efficient inference."""
         if self.inference_mode:
             return
 
@@ -323,7 +329,8 @@ class ConvFFN(nn.Module):
         act_layer: nn.Module = nn.GELU,
         drop: float = 0.0,
     ) -> None:
-        """Build convolutional FFN module.
+        """
+        Build convolutional FFN module.
 
         Args:
             in_channels: Number of input channels.
@@ -371,7 +378,8 @@ class ConvFFN(nn.Module):
 
 
 class RepCPE(nn.Module):
-    """Implementation of conditional positional encoding.
+    """
+    Implementation of conditional positional encoding.
 
     For more details refer to paper:
     `Conditional Positional Encodings for Vision Transformers <https://arxiv.org/pdf/2102.10882.pdf>`_
@@ -383,10 +391,11 @@ class RepCPE(nn.Module):
         self,
         in_channels: int,
         embed_dim: int = 768,
-        spatial_shape: Union[int, Tuple[int, int]] = (7, 7),
+        spatial_shape: Union[int, tuple[int, int]] = (7, 7),
         inference_mode=False,
     ) -> None:
-        """Build reparameterizable conditional positional encoding.
+        """
+        Build reparameterizable conditional positional encoding.
 
         Args:
             in_channels: Number of input channels.
@@ -397,7 +406,7 @@ class RepCPE(nn.Module):
         super().__init__()
         if isinstance(spatial_shape, int):
             spatial_shape = tuple([spatial_shape] * 2)
-        assert isinstance(spatial_shape, Tuple), (
+        assert isinstance(spatial_shape, tuple), (
             f'"spatial_shape" must by a sequence or int, get {type(spatial_shape)} instead.'
         )
         assert len(spatial_shape) == 2, f'Length of "spatial_shape" should be 2, got {len(spatial_shape)} instead.'
@@ -481,7 +490,8 @@ class RepCPE(nn.Module):
 
 
 class RepMixerBlock(nn.Module):
-    """Implementation of Metaformer block with RepMixer as token mixer.
+    """
+    Implementation of Metaformer block with RepMixer as token mixer.
 
     For more details on Metaformer structure, please refer to:
     `MetaFormer Is Actually What You Need for Vision <https://arxiv.org/pdf/2111.11418.pdf>`_
@@ -499,7 +509,8 @@ class RepMixerBlock(nn.Module):
         layer_scale_init_value: float = 1e-5,
         inference_mode: bool = False,
     ):
-        """Build RepMixer Block.
+        """
+        Build RepMixer Block.
 
         Args:
             dim: Number of embedding dimensions.
@@ -550,7 +561,8 @@ class RepMixerBlock(nn.Module):
 
 
 class AttentionBlock(nn.Module):
-    """Implementation of metaformer block with MHSA as token mixer.
+    """
+    Implementation of metaformer block with MHSA as token mixer.
 
     For more details on Metaformer structure, please refer to:
     `MetaFormer Is Actually What You Need for Vision <https://arxiv.org/pdf/2111.11418.pdf>`_
@@ -567,7 +579,8 @@ class AttentionBlock(nn.Module):
         use_layer_scale: bool = True,
         layer_scale_init_value: float = 1e-5,
     ):
-        """Build Attention Block.
+        """
+        Build Attention Block.
 
         Args:
             dim: Number of embedding dimensions.
@@ -615,7 +628,7 @@ class AttentionBlock(nn.Module):
 def basic_blocks(
     dim: int,
     block_index: int,
-    num_blocks: List[int],
+    num_blocks: list[int],
     token_mixer_type: str,
     kernel_size: int = 3,
     mlp_ratio: float = 4.0,
@@ -627,7 +640,8 @@ def basic_blocks(
     layer_scale_init_value: float = 1e-5,
     inference_mode=False,
 ) -> nn.Sequential:
-    """Build FastViT blocks within a stage.
+    """
+    Build FastViT blocks within a stage.
 
     Args:
         dim: Number of embedding dimensions.
@@ -690,7 +704,7 @@ class FastViT(nn.Module):
     def __init__(
         self,
         layers,
-        token_mixers: Tuple[str, ...],
+        token_mixers: tuple[str, ...],
         embed_dims=None,
         mlp_ratios=None,
         downsamples=None,
@@ -780,7 +794,11 @@ class FastViT(nn.Module):
         self.init_cfg = copy.deepcopy(init_cfg)
 
     def cls_init_weights(self, m: nn.Module) -> None:
-        """Init. for classification."""
+        """
+        Init.
+
+        for classification.
+        """
         if isinstance(m, nn.Linear):
             trunc_normal_(m.weight, std=0.02)
             if isinstance(m, nn.Linear) and m.bias is not None:

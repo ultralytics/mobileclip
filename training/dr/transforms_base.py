@@ -1,3 +1,5 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 #
 # Copyright (C) 2023 Apple Inc. All rights reserved.
 #
@@ -7,12 +9,12 @@
 # M., Farhadi, A., Rastegari, M., & Tuzel, O., Proceedings of the IEEE/CVF
 # International Conference on Computer Vision (ICCV), 2023.
 #
-
 """Simplified composition of PyTorch transformations from a configuration dictionary."""
 
 import math
 import random
-from typing import Any, Dict, Optional, OrderedDict, Tuple
+from collections import OrderedDict
+from typing import Any, Optional
 
 import numpy as np
 import timm
@@ -85,7 +87,7 @@ TRANSFORMATION_TO_NAME = OrderedDict(
 )
 
 
-def timm_resize_crop_norm(config: Dict[str, Any]) -> torch.nn.Module:
+def timm_resize_crop_norm(config: dict[str, Any]) -> torch.nn.Module:
     """Set Resize/RandomCrop/Normalization parameters from configs of a Timm teacher."""
     teacher_name = config["timm_resize_crop_norm"]["name"]
     cfg = timm.models.get_pretrained_cfg(teacher_name).to_dict()
@@ -109,7 +111,7 @@ def timm_resize_crop_norm(config: Dict[str, Any]) -> torch.nn.Module:
     return config
 
 
-def clean_config(config: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+def clean_config(config: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
     """Return a clone of configs and remove unnecessary keys from configurations."""
     new_config = {}
     for k, v in config.items():
@@ -119,8 +121,9 @@ def clean_config(config: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]
     return new_config
 
 
-def compose_from_config(config_tr: Dict[str, Any]) -> torch.nn.Module:
-    """Initialize transformations given the dataset name and configurations.
+def compose_from_config(config_tr: dict[str, Any]) -> torch.nn.Module:
+    """
+    Initialize transformations given the dataset name and configurations.
 
     Args:
         config_tr: A dictionary of transformation parameters.
@@ -139,7 +142,8 @@ def compose_from_config(config_tr: Dict[str, Any]) -> torch.nn.Module:
 
 
 class MixUp(torch.nn.Module):
-    r"""MixUp image transformation.
+    r"""
+    MixUp image transformation.
 
     For an input x the
     output is :math:`\lambda x + (1-\lambda) x_p` , where :math:`x_p` is a
@@ -149,7 +153,8 @@ class MixUp(torch.nn.Module):
     """
 
     def __init__(self, alpha: float = 1.0, p: float = 1.0, div_by: float = 1.0, *args, **kwargs) -> None:
-        """Initialize MixUp transformation.
+        """
+        Initialize MixUp transformation.
 
         Args:
             alpha: A positive real number that determines the sampling
@@ -184,8 +189,9 @@ class MixUp(torch.nn.Module):
         x2: Optional[Tensor] = None,
         y: Optional[Tensor] = None,
         y2: Optional[Tensor] = None,
-    ) -> Tuple[Tensor, Tensor]:
-        r"""Apply pixel-space mixing to a batch of examples.
+    ) -> tuple[Tensor, Tensor]:
+        r"""
+        Apply pixel-space mixing to a batch of examples.
 
         Args:
             x: A tensor with a batch of samples. Shape: [batch_size, ...].
@@ -221,14 +227,16 @@ class MixUp(torch.nn.Module):
 
 
 class CutMix(torch.nn.Module):
-    r"""CutMix image transformation.
+    r"""
+    CutMix image transformation.
 
     Please see the full paper for more details:
     https://arxiv.org/pdf/1905.04899.pdf
     """
 
     def __init__(self, alpha: float = 1.0, p: float = 1.0, *args, **kwargs) -> None:
-        """Initialize CutMix transformation.
+        """
+        Initialize CutMix transformation.
 
         Args:
             alpha: The alpha parameter to the Beta for producing a mixing lambda.
@@ -240,8 +248,9 @@ class CutMix(torch.nn.Module):
         self.p = p
 
     @staticmethod
-    def rand_bbox(size: torch.Size, lam: float) -> Tuple[int, int, int, int]:
-        """Return a random bbox coordinates.
+    def rand_bbox(size: torch.Size, lam: float) -> tuple[int, int, int, int]:
+        """
+        Return a random bbox coordinates.
 
         Args:
             size: model input tensor shape in this format: (...,H,W)
@@ -271,7 +280,7 @@ class CutMix(torch.nn.Module):
 
         return (bbx1, bby1, bbx2, bby2)
 
-    def get_params(self, size: torch.Size, alpha: float) -> Tuple[float, Tuple[int, int, int, int]]:
+    def get_params(self, size: torch.Size, alpha: float) -> tuple[float, tuple[int, int, int, int]]:
         """Return CutMix random parameters."""
         # Skip mixing by probability 1-self.p
         if alpha == 0 or torch.rand(1) > self.p:
@@ -288,8 +297,9 @@ class CutMix(torch.nn.Module):
         x2: Optional[Tensor] = None,
         y: Optional[Tensor] = None,
         y2: Optional[Tensor] = None,
-    ) -> Tuple[Tensor, Tensor]:
-        """Mix images by replacing random patches from one to the other.
+    ) -> tuple[Tensor, Tensor]:
+        """
+        Mix images by replacing random patches from one to the other.
 
         Args:
             x: A tensor with a batch of samples. Shape: [batch_size, ...].
@@ -298,7 +308,6 @@ class CutMix(torch.nn.Module):
             y: A tensor of target labels. Shape: [batch_size, ...].
             y2: A tensor of target labels for paired samples. Shape: [batch_size, ...].
             params: Dictionary of {'lam': lam_val} to reproduce a mixing.
-
         """
         alpha = self.alpha
 
@@ -328,9 +337,13 @@ class CutMix(torch.nn.Module):
 
 
 class MixingTransforms:
-    """Randomly apply only one of MixUp or CutMix. Used for standard training."""
+    """
+    Randomly apply only one of MixUp or CutMix.
 
-    def __init__(self, config_tr: Dict[str, Any], num_classes: int) -> None:
+    Used for standard training.
+    """
+
+    def __init__(self, config_tr: dict[str, Any], num_classes: int) -> None:
         """Initialize mixup and/or cutmix."""
         config_tr = clean_config(config_tr)
         self.mixing_transforms = []
@@ -340,7 +353,7 @@ class MixingTransforms:
             self.mixing_transforms += [CutMix(**config_tr["cutmix"])]
         self.num_classes = num_classes
 
-    def __call__(self, images: Tensor, target: Tensor) -> Tuple[Tensor, Tensor]:
+    def __call__(self, images: Tensor, target: Tensor) -> tuple[Tensor, Tensor]:
         """Apply only one of MixUp or CutMix."""
         if len(self.mixing_transforms) > 0:
             one_hot_label = F.one_hot(target, num_classes=self.num_classes)
