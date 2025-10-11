@@ -2,27 +2,26 @@
 
 # MobileCLIP: Fast Image-Text Models Through Multi-Modal Reinforced Training
 
-[![Ultralytics Actions](https://github.com/ultralytics/velocity/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/velocity/actions/workflows/format.yml)
+This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training](https://arxiv.org/pdf/2311.17049.pdf) (CVPR 2024) by Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, and Oncel Tuzel. It provides code for inference, training, and evaluation of MobileCLIP models trained on DataCompDR datasets.
+
+[![Ultralytics Actions](https://github.com/ultralytics/mobileclip/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/mobileclip/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
 [![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com/)
 [![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://reddit.com/r/ultralytics)
-
-This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training](https://arxiv.org/pdf/2311.17049.pdf) (CVPR 2024)  
-_Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, Oncel Tuzel._
-
-It provides code for inference, training, and evaluation of MobileCLIP models trained on DataCompDR datasets.
 
 <p align="center">
 <img src="docs/fig_accuracy_latency.png" alt="Accuracy vs latency figure." width="400"/>
 </p>
 
-- **Update 2024/11/22:** iOS app released for real-time zero-shot image classification with MobileCLIP. Explore the [iOS app](./ios_app/).
-- **Update 2024/06/13:** Training scripts for [OpenCLIP](https://github.com/mlfoundations/open_clip/tree/main/src/open_clip) on DataCompDR datasets are now available. See [training/](./training/).
-- **Update 2024/06/13:** MobileCLIP models and DataCompDR datasets are hosted on Hugging Face in the [MobileCLIP/DataCompDR Collection](https://huggingface.co/collections/apple/mobileclip-models-datacompdr-data-665789776e1aa2b59f35f7c8).
+## 📰 What's New
+
+- **2024/11/22:** iOS app released for real-time zero-shot image classification with MobileCLIP. Explore the [iOS app](./ios_app/).
+- **2024/06/13:** Training scripts for [OpenCLIP](https://github.com/mlfoundations/open_clip/tree/main/src/open_clip) on DataCompDR datasets are now available. See [training/](./training/).
+- **2024/06/13:** MobileCLIP models and DataCompDR datasets are hosted on Hugging Face in the [MobileCLIP/DataCompDR Collection](https://huggingface.co/collections/apple/mobileclip-models-datacompdr-data-665789776e1aa2b59f35f7c8).
 
 ## 🚀 Highlights
 
-- The smallest variant, **MobileCLIP-S0**, achieves comparable zero-shot performance to [OpenAI's ViT-B/16](https://arxiv.org/abs/2103.00020) while being 4.8x faster and 2.8x smaller.
+- The smallest variant, **MobileCLIP-S0**, achieves comparable [zero-shot](https://www.ultralytics.com/glossary/zero-shot-learning) performance to [OpenAI's ViT-B/16](https://arxiv.org/abs/2103.00020) while being 4.8x faster and 2.8x smaller.
 - **MobileCLIP-S2** surpasses [SigLIP's ViT-B/16](https://arxiv.org/abs/2303.15343) in average zero-shot performance, is 2.3x faster and 2.1x smaller, and is trained with 3x fewer seen samples.
 - **MobileCLIP-B (LT)** attains a zero-shot ImageNet accuracy of **77.2%**, outperforming recent models like [DFN](https://arxiv.org/abs/2309.17425), [SigLIP](https://arxiv.org/abs/2303.15343), and even [OpenAI's ViT-L/14@336](https://arxiv.org/abs/2103.00020).
 - Dedicated iOS app demonstrates high performance on mobile devices.
@@ -72,7 +71,7 @@ with torch.no_grad(), torch.cuda.amp.autocast():
 print("Label probs:", text_probs)
 ```
 
-For an example of loading data from Hugging Face, see [hf_dataset_example.py](./hf_dataset_example.py).
+For an example of loading data from [Hugging Face](https://www.ultralytics.com/glossary/hugging-face), see [hf_dataset_example.py](./hf_dataset_example.py).
 
 ## 🔗 OpenCLIP Support
 
@@ -112,9 +111,7 @@ Available variants on OpenCLIP:
 
 ## 📊 Evaluation
 
-Comprehensive evaluation results are available in the [results directory](./results).  
-To reproduce results, use the provided script for zero-shot evaluation on the ImageNet-1k dataset.  
-For evaluation on all 38 datasets, follow the instructions in the [DataComp repository](https://github.com/mlfoundations/datacomp).
+Comprehensive evaluation results are available in the [results directory](./results). To reproduce results, use the provided script for zero-shot evaluation on the [ImageNet-1k dataset](https://docs.ultralytics.com/datasets/classify/imagenet/). For evaluation on all 38 datasets, follow the instructions in the [DataComp repository](https://github.com/mlfoundations/datacomp).
 
 ```bash
 # Run evaluation with a single GPU
@@ -151,6 +148,38 @@ If you find this code useful, please cite:
 
 This codebase builds upon multiple open-source contributions. See [ACKNOWLEDGEMENTS](ACKNOWLEDGEMENTS) for details.
 
----
+## 💡 Contribute
 
-We welcome your contributions! If you have suggestions, improvements, or want to get involved, please open an issue or submit a pull request.
+Contributions are the lifeblood of the [open-source](https://www.ultralytics.com/blog/tips-to-start-contributing-to-ultralytics-open-source-projects) community, and we greatly appreciate your input! Whether it's bug fixes, feature suggestions, or documentation improvements, every contribution helps.
+
+Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing/) for detailed instructions on how to get involved. We also encourage you to fill out our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to share your feedback. Thank you 🙏 to everyone who contributes!
+
+[![Ultralytics open-source contributors](https://raw.githubusercontent.com/ultralytics/assets/main/im/image-contributors.png)](https://github.com/ultralytics/ultralytics/graphs/contributors)
+
+## 📝 License
+
+Ultralytics provides two licensing options to accommodate different use cases:
+
+- **AGPL-3.0 License**: Ideal for students and enthusiasts, this [OSI-approved](https://opensource.org/license/agpl-v3) open-source license promotes collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/mobileclip/blob/main/LICENSE) file for details.
+- **Enterprise License**: Designed for commercial applications, this license allows for the integration of Ultralytics software and AI models into commercial products and services. For more information, visit [Ultralytics Licensing](https://www.ultralytics.com/license).
+
+## 📬 Contact Us
+
+If you encounter bugs, have feature requests, or wish to contribute, please visit [GitHub Issues](https://github.com/ultralytics/mobileclip/issues). For broader discussions and questions about Ultralytics projects, join our vibrant community on [Discord](https://discord.com/invite/ultralytics)!
+
+<br>
+<div align="center">
+  <a href="https://github.com/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png" width="3%" alt="Ultralytics GitHub"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://www.linkedin.com/company/ultralytics/"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png" width="3%" alt="Ultralytics LinkedIn"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://twitter.com/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png" width="3%" alt="Ultralytics Twitter"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://youtube.com/ultralytics?sub_confirmation=1"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="Ultralytics YouTube"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://www.tiktok.com/@ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png" width="3%" alt="Ultralytics TikTok"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://ultralytics.com/bilibili"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-bilibili.png" width="3%" alt="Ultralytics BiliBili"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://discord.com/invite/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-discord.png" width="3%" alt="Ultralytics Discord"></a>
+</div>
