@@ -1,15 +1,14 @@
 # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
 
-#
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
-#
+
+from __future__ import annotations
 
 import os
 import sys
 import time
 import traceback
-from typing import Optional, Union
 
 text_colors = {
     "logs": "\033[34m",  # 033 is the escape code and 34 is the color code
@@ -56,7 +55,7 @@ def log(message: str, end="\n") -> None:
     print(f"{time_stamp} - {log_str} - {message}", end=end)
 
 
-def warning(message: Union[str, Warning]) -> None:
+def warning(message: str | Warning) -> None:
     if isinstance(message, Warning):
         message = f"{type(message).__name__}({','.join(map(repr, message.args))}"
 
@@ -83,7 +82,7 @@ def ignore_exception_with_warning(message: str) -> None:
     warning(f"{message}:\n{traceback.format_exc()}".replace("\n", "\n(WARNING)"))
 
 
-def info(message: str, print_line: Optional[bool] = False) -> None:
+def info(message: str, print_line: bool | None = False) -> None:
     time_stamp = get_curr_time_stamp()
     info_str = text_colors["info"] + text_colors["bold"] + "INFO   " + text_colors["end_color"]
     print(f"{time_stamp} - {info_str} - {message}")
@@ -97,11 +96,11 @@ def debug(message: str) -> None:
     print(f"{time_stamp} - {log_str} - {message}")
 
 
-def double_dash_line(dashes: Optional[int] = 75) -> None:
+def double_dash_line(dashes: int | None = 75) -> None:
     print(text_colors["error"] + "=" * dashes + text_colors["end_color"])
 
 
-def singe_dash_line(dashes: Optional[int] = 67) -> None:
+def singe_dash_line(dashes: int | None = 67) -> None:
     print("-" * dashes)
 
 

@@ -6,8 +6,10 @@
 #
 """Model schema in open_clip format for inference only."""
 
+from __future__ import annotations
+
 import math
-from typing import Any, Optional
+from typing import Any
 
 import torch
 import torch.nn.functional as F
@@ -54,9 +56,7 @@ class CLIP(nn.Module):
         text_features = self.text_encoder(text_tokens=text, key_padding_mask=None)
         return F.normalize(text_features, dim=-1) if normalize else text_features
 
-    def forward(
-        self, image: Optional[torch.Tensor] = None, text: Optional[torch.Tensor] = None, *args, **kwargs
-    ) -> Any:
+    def forward(self, image: torch.Tensor | None = None, text: torch.Tensor | None = None, *args, **kwargs) -> Any:
         image_embeddings = self.encode_image(image, normalize=True) if image is not None else None
         text_embeddings = self.encode_text(text, normalize=True) if text is not None else None
 

@@ -11,7 +11,7 @@ https://github.com/apple/ml-cvnets/blob/main/cvnets/models/classification/vit.py
 Please see ACKNOWLEDGEMENTS for license details.
 """
 
-from typing import Optional, Union
+from __future__ import annotations
 
 import numpy as np
 import torch
@@ -72,17 +72,17 @@ class ConvNormAct(nn.Module):
         cfg: dict,
         in_channels: int,
         out_channels: int,
-        kernel_size: Union[int, tuple[int, ...]],
-        stride: Union[int, tuple[int, ...]] = 1,
-        dilation: Union[int, tuple[int, ...]] = 1,
-        padding: Optional[Union[int, tuple[int, ...]]] = None,
+        kernel_size: int | tuple[int, ...],
+        stride: int | tuple[int, ...] = 1,
+        dilation: int | tuple[int, ...] = 1,
+        padding: int | tuple[int, ...] | None = None,
         groups: int = 1,
         bias: bool = False,
         padding_mode: str = "zeros",
         use_norm: bool = True,
         use_act: bool = True,
-        norm_layer: Optional[nn.Module] = None,
-        act_layer: Optional[nn.Module] = None,
+        norm_layer: nn.Module | None = None,
+        act_layer: nn.Module | None = None,
         *args,
         **kwargs,
     ) -> None:
@@ -330,7 +330,7 @@ class VisionTransformer(nn.Module):
 
         return x, (n_h, n_w)
 
-    def extract_features(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, Optional[Tensor]]:
+    def extract_features(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, Tensor | None]:
         # The extract_features function for ViT returns two outputs: (1) embedding corresponding to CLS token
         # and (2) image embeddings of the shape [B, C, h//o, w//o], where the value of o is typically 16.
         return_image_embeddings = kwargs.get("return_image_embeddings", False)
@@ -369,7 +369,7 @@ class VisionTransformer(nn.Module):
         cls_embedding = self.classifier(cls_embedding)
         return cls_embedding, image_embedding
 
-    def forward(self, x: Tensor, *args, **kwargs) -> Union[Tensor, dict[str, Tensor]]:
+    def forward(self, x: Tensor, *args, **kwargs) -> Tensor | dict[str, Tensor]:
         # In ViT model, we can return either classifier embeddings (logits) or image embeddings or both.
         # To return the image embeddings, we need to set keyword argument (return_image_embeddings) as True.
         if kwargs.get("return_image_embeddings", False):

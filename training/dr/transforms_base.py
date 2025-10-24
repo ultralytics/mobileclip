@@ -11,10 +11,12 @@
 #
 """Simplified composition of PyTorch transformations from a configuration dictionary."""
 
+from __future__ import annotations
+
 import math
 import random
 from collections import OrderedDict
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 import timm
@@ -97,7 +99,7 @@ def timm_resize_crop_norm(config: dict[str, Any]) -> torch.nn.Module:
         img_size = list(cfg["input_size"])[-1]
     # Crop ratio and image size for optimal performance of a Timm model
     crop_pct = cfg["crop_pct"]
-    scale_size = int(math.floor(img_size / crop_pct))
+    scale_size = math.floor(img_size / crop_pct)
     interpolation = cfg["interpolation"]
     config["resize"] = {
         "size": scale_size,
@@ -186,9 +188,9 @@ class MixUp(torch.nn.Module):
     def forward(
         self,
         x: Tensor,
-        x2: Optional[Tensor] = None,
-        y: Optional[Tensor] = None,
-        y2: Optional[Tensor] = None,
+        x2: Tensor | None = None,
+        y: Tensor | None = None,
+        y2: Tensor | None = None,
     ) -> tuple[Tensor, Tensor]:
         r"""
         Apply pixel-space mixing to a batch of examples.
@@ -294,9 +296,9 @@ class CutMix(torch.nn.Module):
     def forward(
         self,
         x: Tensor,
-        x2: Optional[Tensor] = None,
-        y: Optional[Tensor] = None,
-        y2: Optional[Tensor] = None,
+        x2: Tensor | None = None,
+        y: Tensor | None = None,
+        y2: Tensor | None = None,
     ) -> tuple[Tensor, Tensor]:
         """
         Mix images by replacing random patches from one to the other.
