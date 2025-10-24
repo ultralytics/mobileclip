@@ -4,7 +4,7 @@
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
-from typing import Optional
+from __future__ import annotations
 
 import torch
 import torch.nn as nn
@@ -28,7 +28,7 @@ class GlobalPool(nn.Module):
 
     pool_types = ["mean", "rms", "abs"]
 
-    def __init__(self, pool_type: Optional[str] = "mean", keep_dim: Optional[bool] = False, *args, **kwargs) -> None:
+    def __init__(self, pool_type: str | None = "mean", keep_dim: bool | None = False, *args, **kwargs) -> None:
         super().__init__()
         if pool_type not in self.pool_types:
             logger.error(f"Supported pool types are: {self.pool_types}. Got {pool_type}")

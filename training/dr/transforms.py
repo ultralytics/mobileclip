@@ -11,8 +11,10 @@
 #
 """Extending transformations from torchvision to be reproducible."""
 
+from __future__ import annotations
+
 from collections import OrderedDict, defaultdict
-from typing import Any, Optional, Union
+from typing import Any
 
 import torch
 import torch.nn.parallel
@@ -48,7 +50,7 @@ class Compressible:
 class Resize(T.Resize, Compressible):
     """Extending PyTorch's Resize to reapply a given transformation."""
 
-    def forward(self, img: Tensor, params: Optional[torch.Size] = None) -> tuple[Tensor, torch.Size]:
+    def forward(self, img: Tensor, params: torch.Size | None = None) -> tuple[Tensor, torch.Size]:
         """Transform an image randomly or reapply based on given parameters."""
         img = super().forward(img)
         return img, self.size
@@ -57,7 +59,7 @@ class Resize(T.Resize, Compressible):
 class CenterCrop(T.CenterCrop, Compressible):
     """Extending PyTorch's CenterCrop to reapply a given transformation."""
 
-    def forward(self, img: Tensor, params: Optional[NO_PARAM_TYPE] = None) -> tuple[Tensor, NO_PARAM_TYPE]:
+    def forward(self, img: Tensor, params: NO_PARAM_TYPE | None = None) -> tuple[Tensor, NO_PARAM_TYPE]:
         """Transform an image randomly or reapply based on given parameters."""
         img = super().forward(img)
         # TODO: can we remove contiguous?
@@ -79,7 +81,7 @@ class RandomCrop(T.RandomCrop, Compressible):
             self.params = super().get_params(*args, **kwargs)
         return self.params
 
-    def forward(self, img: Tensor, params: Optional[tuple[int, int]] = None) -> tuple[Tensor, tuple[int, int]]:
+    def forward(self, img: Tensor, params: tuple[int, int] | None = None) -> tuple[Tensor, tuple[int, int]]:
         """Transform an image randomly or reapply based on given parameters."""
         self.params = None
         if params is not None:
@@ -109,8 +111,8 @@ class RandomResizedCrop(T.RandomResizedCrop, Compressible):
     def forward(
         self,
         img: Tensor,
-        params: Optional[tuple[int, int, int, int]] = None,
-        size: Optional[tuple[int, int]] = None,
+        params: tuple[int, int, int, int] | None = None,
+        size: tuple[int, int] | None = None,
     ) -> tuple[Tensor, tuple[int, int, int, int]]:
         """Transform an image randomly or reapply based on given parameters."""
         self.params = None
@@ -129,7 +131,7 @@ class RandomResizedCrop(T.RandomResizedCrop, Compressible):
 class RandomHorizontalFlip(T.RandomHorizontalFlip, Compressible):
     """Extending PyTorch's RandomHorizontalFlip to reapply a given transformation."""
 
-    def forward(self, img: Tensor, params: Optional[bool] = None) -> tuple[Tensor, bool]:
+    def forward(self, img: Tensor, params: bool | None = None) -> tuple[Tensor, bool]:
         """
         Transform an image randomly or reapply based on given parameters.
 
@@ -178,7 +180,7 @@ class RandAugment(T.RandAugment, Compressible):
         self.p = p
 
     def forward(
-        self, img: Tensor, params: Optional[list[tuple[str, float]]] = None, **kwargs
+        self, img: Tensor, params: list[tuple[str, float]] | None = None, **kwargs
     ) -> tuple[Tensor, list[tuple[str, float]]]:
         """
         Transform an image randomly or reapply based on given parameters.
@@ -243,7 +245,7 @@ class RandAugment(T.RandAugment, Compressible):
 class RandomErasing(T.RandomErasing, Compressible):
     """Extending PyTorch's RandomErasing to reapply a given transformation."""
 
-    def forward(self, img: Tensor, params: Optional[tuple] = None, **kwargs) -> tuple[Tensor, tuple]:
+    def forward(self, img: Tensor, params: tuple | None = None, **kwargs) -> tuple[Tensor, tuple]:
         """
         Transform an image randomly or reapply based on given parameters.
 
@@ -270,7 +272,7 @@ class RandomErasing(T.RandomErasing, Compressible):
 class Normalize(T.Normalize, Compressible):
     """PyTorch's Normalize with an extra dummy transformation parameter."""
 
-    def forward(self, *args, params: Optional[NO_PARAM_TYPE] = None, **kwargs) -> tuple[Tensor, tuple]:
+    def forward(self, *args, params: NO_PARAM_TYPE | None = None, **kwargs) -> tuple[Tensor, tuple]:
         """Return normalized input and NO_PARAM as parameters."""
         x = super().forward(*args, **kwargs)
         return x, NO_PARAM
@@ -294,9 +296,9 @@ class MixUp(transforms.MixUp, Compressible):
         self,
         x: Tensor,
         x2: Tensor,
-        y: Optional[Tensor] = None,
-        y2: Optional[Tensor] = None,
-        params: dict[str, float] = None,
+        y: Tensor | None = None,
+        y2: Tensor | None = None,
+        params: dict[str, float] | None = None,
     ) -> tuple[tuple[Tensor, Tensor], dict[str, float]]:
         """Transform an image randomly or reapply based on given parameters."""
         self.params = None
@@ -325,10 +327,10 @@ class CutMix(transforms.CutMix, Compressible):
         self,
         x: Tensor,
         x2: Tensor,
-        y: Optional[Tensor] = None,
-        y2: Optional[Tensor] = None,
-        params: dict[str, float] = None,
-    ) -> tuple[tuple[Tensor, Tensor], dict[str, Union[float, tuple[int, int, int, int]]]]:
+        y: Tensor | None = None,
+        y2: Tensor | None = None,
+        params: dict[str, float] | None = None,
+    ) -> tuple[tuple[Tensor, Tensor], dict[str, float | tuple[int, int, int, int]]]:
         """Transform an image randomly or reapply based on given parameters."""
         self.params = None
         if params is not None:
@@ -342,7 +344,7 @@ class CutMix(transforms.CutMix, Compressible):
         """Return compressed parameters."""
         if params is None:
             return None
-        return [params[0]] + list(params[1])
+        return [params[0], *list(params[1])]
 
     @staticmethod
     def decompress_params(params: Any) -> Any:
@@ -422,8 +424,8 @@ class Compose:
         self,
         img: Tensor,
         img2: Tensor = None,
-        after_collate: Optional[bool] = False,
-        size: Optional[tuple[int, int]] = None,
+        after_collate: bool | None = False,
+        size: tuple[int, int] | None = None,
     ) -> tuple[Tensor, dict[str, Any]]:
         """
         Apply a transformation to two images and return augmentation parameters.
@@ -470,7 +472,7 @@ class Compose:
         img: Tensor,
         params: dict[str, Any],
         img2: Tensor = None,
-        size: Optional[tuple[int, int]] = None,
+        size: tuple[int, int] | None = None,
     ) -> tuple[Tensor, dict[str, Any]]:
         """
         Reapply transformations to an image given augmentation parameters.

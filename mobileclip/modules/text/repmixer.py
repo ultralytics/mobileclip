@@ -4,7 +4,7 @@
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
-from typing import Optional
+from __future__ import annotations
 
 import torch
 import torch.nn as nn
@@ -20,8 +20,8 @@ class ConvFFN(nn.Module):
         self,
         in_channels: int,
         context_size: int,
-        hidden_channels: Optional[int] = None,
-        out_channels: Optional[int] = None,
+        hidden_channels: int | None = None,
+        out_channels: int | None = None,
         act_layer: nn.Module = nn.GELU,
         drop: float = 0.0,
     ) -> None:

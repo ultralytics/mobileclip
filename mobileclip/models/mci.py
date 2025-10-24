@@ -4,9 +4,10 @@
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
+from __future__ import annotations
+
 import copy
 from functools import partial
-from typing import Optional, Union
 
 import torch
 import torch.nn as nn
@@ -324,8 +325,8 @@ class ConvFFN(nn.Module):
     def __init__(
         self,
         in_channels: int,
-        hidden_channels: Optional[int] = None,
-        out_channels: Optional[int] = None,
+        hidden_channels: int | None = None,
+        out_channels: int | None = None,
         act_layer: nn.Module = nn.GELU,
         drop: float = 0.0,
     ) -> None:
@@ -391,7 +392,7 @@ class RepCPE(nn.Module):
         self,
         in_channels: int,
         embed_dim: int = 768,
-        spatial_shape: Union[int, tuple[int, int]] = (7, 7),
+        spatial_shape: int | tuple[int, int] = (7, 7),
         inference_mode=False,
     ) -> None:
         """

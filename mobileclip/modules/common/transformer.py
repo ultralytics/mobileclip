@@ -12,7 +12,7 @@ https://github.com/apple/ml-cvnets/blob/main/cvnets/text_encoders/transformer.py
 Please see ACKNOWLEDGEMENTS for license details.
 """
 
-from typing import Optional, Union
+from __future__ import annotations
 
 import torch
 from torch import Size, Tensor, nn
@@ -27,9 +27,9 @@ class LayerNormFP32(nn.LayerNorm):
 
     def __init__(
         self,
-        normalized_shape: Union[int, list[int], Size],
-        eps: Optional[float] = 1e-5,
-        elementwise_affine: Optional[bool] = True,
+        normalized_shape: int | list[int] | Size,
+        eps: float | None = 1e-5,
+        elementwise_affine: bool | None = True,
         *args,
         **kwargs,
     ):
@@ -62,9 +62,9 @@ class PositionalEmbedding(nn.Module):
         self,
         num_embeddings: int,
         embedding_dim: int,
-        padding_idx: Optional[int] = None,
-        is_learnable: Optional[bool] = False,
-        interpolation_mode: Optional[str] = "bilinear",
+        padding_idx: int | None = None,
+        is_learnable: bool | None = False,
+        interpolation_mode: str | None = "bilinear",
         *args,
         **kwargs,
     ):
@@ -95,8 +95,8 @@ class LearnablePositionalEmbedding(nn.Module):
         self,
         num_embeddings: int,
         embedding_dim: int,
-        padding_idx: Optional[int] = None,
-        interpolation_mode: Optional[str] = "bilinear",
+        padding_idx: int | None = None,
+        interpolation_mode: str | None = "bilinear",
         *args,
         **kwargs,
     ):
@@ -160,9 +160,9 @@ class MultiHeadAttention(nn.Module):
         self,
         embed_dim: int,
         num_heads: int,
-        attn_dropout: Optional[float] = 0.0,
-        bias: Optional[bool] = True,
-        output_dim: Optional[int] = None,
+        attn_dropout: float | None = 0.0,
+        bias: bool | None = True,
+        output_dim: int | None = None,
         *args,
         **kwargs,
     ) -> None:
@@ -192,12 +192,12 @@ class MultiHeadAttention(nn.Module):
     def _forward_impl(
         self,
         x_q: Tensor,
-        x_kv: Optional[Tensor] = None,
-        key_padding_mask: Optional[Tensor] = None,
-        attn_mask: Optional[Tensor] = None,
+        x_kv: Tensor | None = None,
+        key_padding_mask: Tensor | None = None,
+        attn_mask: Tensor | None = None,
     ) -> Tensor:
         # [N, S, C]
-        b_sz, S_len, in_channels = x_q.shape
+        b_sz, S_len, _in_channels = x_q.shape
 
         if x_kv is None:
             # self-attention
@@ -242,7 +242,7 @@ class MultiHeadAttention(nn.Module):
         # [N, h, S, c] x [N, h, c, T] --> [N, h, S, T]
         attn = torch.matmul(query, key)
 
-        batch_size, num_heads, num_src_tokens, num_tgt_tokens = attn.shape
+        batch_size, _num_heads, num_src_tokens, num_tgt_tokens = attn.shape
         if attn_mask is not None:
             # attn_mask shape should be the same as attn
             assert list(attn_mask.shape) == [
@@ -288,9 +288,9 @@ class MultiHeadAttention(nn.Module):
     def forward(
         self,
         x_q: Tensor,
-        x_kv: Optional[Tensor] = None,
-        key_padding_mask: Optional[Tensor] = None,
-        attn_mask: Optional[Tensor] = None,
+        x_kv: Tensor | None = None,
+        key_padding_mask: Tensor | None = None,
+        attn_mask: Tensor | None = None,
         *args,
         **kwargs,
     ) -> Tensor:
@@ -326,12 +326,12 @@ class TransformerEncoder(nn.Module):
         self,
         embed_dim: int,
         ffn_latent_dim: int,
-        num_heads: Optional[int] = 8,
-        attn_dropout: Optional[float] = 0.0,
-        dropout: Optional[float] = 0.0,
-        ffn_dropout: Optional[float] = 0.0,
-        transformer_norm_layer: Optional[str] = "layer_norm",
-        stochastic_dropout: Optional[float] = 0.0,
+        num_heads: int | None = 8,
+        attn_dropout: float | None = 0.0,
+        dropout: float | None = 0.0,
+        ffn_dropout: float | None = 0.0,
+        transformer_norm_layer: str | None = "layer_norm",
+        stochastic_dropout: float | None = 0.0,
         *args,
         **kwargs,
     ) -> None:
@@ -386,9 +386,9 @@ class TransformerEncoder(nn.Module):
     def forward(
         self,
         x: Tensor,
-        x_prev: Optional[Tensor] = None,
-        key_padding_mask: Optional[Tensor] = None,
-        attn_mask: Optional[Tensor] = None,
+        x_prev: Tensor | None = None,
+        key_padding_mask: Tensor | None = None,
+        attn_mask: Tensor | None = None,
         *args,
         **kwargs,
     ) -> Tensor:

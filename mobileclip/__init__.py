@@ -4,6 +4,8 @@
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
+from __future__ import annotations
+
 import json
 import os
 from typing import Any, Optional, Tuple, Union
@@ -27,9 +29,9 @@ from mobileclip.modules.text.tokenizer import (
 
 def create_model_and_transforms(
     model_name: str,
-    pretrained: Optional[str] = None,
-    reparameterize: Optional[bool] = True,
-    device: Union[str, torch.device] = "cpu",
+    pretrained: str | None = None,
+    reparameterize: bool | None = True,
+    device: str | torch.device = "cpu",
 ) -> tuple[nn.Module, Any, Any]:
     """
     Method to instantiate model and pre-processing transforms necessary for inference.

@@ -4,9 +4,10 @@
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2024 Apple Inc. All Rights Reserved.
 #
+from __future__ import annotations
+
 import math
 from collections.abc import Sequence
-from typing import Optional
 
 import torch
 from torch import Tensor, nn
@@ -153,7 +154,7 @@ class TextTransformer(nn.Module):
     def encode_text(
         self,
         text_tokens: Tensor,
-        key_padding_mask: Optional[Tensor] = None,
+        key_padding_mask: Tensor | None = None,
         return_all_tokens: bool = False,
         *args,
         **kwargs,
@@ -204,7 +205,7 @@ class TextTransformer(nn.Module):
     def forward(
         self,
         text_tokens: Tensor,
-        key_padding_mask: Optional[Tensor] = None,
+        key_padding_mask: Tensor | None = None,
         return_all_tokens: bool = False,
         *args,
         **kwargs,
