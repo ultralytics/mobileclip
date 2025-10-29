@@ -9,7 +9,7 @@ Implementation of the following modules is borrowed from ml-cvnets repo:
 https://github.com/apple/ml-cvnets/blob/main/cvnets/layers/multi_head_attention.py
 https://github.com/apple/ml-cvnets/blob/main/cvnets/text_encoders/transformer.py.
 
-Please see ACKNOWLEDGEMENTS for license details.
+Please see ACKNOWLEDGMENTS for license details.
 """
 
 from __future__ import annotations

@@ -6,7 +6,7 @@
 #
 """
 Evaluation code is borrowed from https://github.com/mlfoundations/datacomp/blob/main/eval_utils/wds_eval.py
-Licensed under MIT License, see ACKNOWLEDGEMENTS for details.
+Licensed under MIT License, see ACKNOWLEDGMENTS for details.
 """
 
 import argparse

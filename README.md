@@ -144,9 +144,9 @@ If you find this code useful, please cite:
 }
 ```
 
-## 🙏 Acknowledgements
+## 🙏 Acknowledgments
 
-This codebase builds upon multiple open-source contributions. See [ACKNOWLEDGEMENTS](ACKNOWLEDGEMENTS) for details.
+This codebase builds upon multiple open-source contributions. See [ACKNOWLEDGMENTS](ACKNOWLEDGMENTS) for details.
 
 ## 💡 Contribute
 
