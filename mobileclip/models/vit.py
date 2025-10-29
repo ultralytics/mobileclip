@@ -8,7 +8,7 @@
 Implementation of the following modules is borrowed from ml-cvnets repo:
 https://github.com/apple/ml-cvnets/blob/main/cvnets/models/classification/vit.py.
 
-Please see ACKNOWLEDGEMENTS for license details.
+Please see ACKNOWLEDGMENTS for license details.
 """
 
 from __future__ import annotations
