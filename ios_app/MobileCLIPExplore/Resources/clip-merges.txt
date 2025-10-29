@@ -2829,7 +2829,7 @@ or gan
 cent ral</w>
 ar a</w>
 ro ll</w>
-favour ite</w>
+favor ite</w>
 che ster</w>
 el se</w>
 p ay</w>
@@ -15049,7 +15049,7 @@ time less</w>
 sr ilan
 bu ys</w>
 ki ds
-colour ful</w>
+color ful</w>
 a shi
 ch ir
 mu m
@@ -16072,7 +16072,7 @@ chev y</w>
 san tos</w>
 own ership</w>
 cogn itive</w>
-favour ites</w>
+favor ites</w>
 sh ed
 phil anthro
 dele ted</w>
@@ -17864,7 +17864,7 @@ te sti
 han i</w>
 fin ancing</w>
 astron aut</w>
-water colour</w>
+water color</w>
 ri sh
 comic con</w>
 gar t
@@ -19799,7 +19799,7 @@ j it</w>
 a post
 mb le
 ble eding</w>
-neighbour hood</w>
+neighbor hood</w>
 a very</w>
 expre ssions</w>
 mac donald</w>
@@ -31290,7 +31290,7 @@ g mb</w>
 fly fishing</w>
 hath away</w>
 commerci al
-colour ing</w>
+color ing</w>
 skul ls</w>
 pivo t</w>
 te p</w>
@@ -36389,7 +36389,7 @@ loo king
 co ates</w>
 ap ur
 am ie</w>
-uk labour</w>
+uk labor</w>
 at in
 g la</w>
 adop table</w>
@@ -36495,7 +36495,7 @@ clari fy</w>
 li th
 kin ky</w>
 âĿ £
-labour doorstep</w>
+labor doorstep</w>
 son ata</w>
 ju ris
 mai den
@@ -44319,7 +44319,7 @@ afford ability</w>
 ting ed</w>
 ter as</w>
 ay ush
-wanna one</w>
+want to one</w>
 rh ine</w>
 dan a
 sh ana</w>
@@ -50941,7 +50941,7 @@ ob j</w>
 laus anne</w>
 eli st</w>
 con genital</w>
-under armour</w>
+under armor</w>
 ent ree</w>
 critici zing</w>
 vogue magazine</w>
@@ -51423,7 +51423,7 @@ tele cast</w>
 s ats</w>
 nat gas</w>
 ho v
-neighbour ing</w>
+neighbor ing</w>
 mag ell
 escal ated</w>
 newmusic friday</w>
@@ -56183,7 +56183,7 @@ common wealth
 baha dur</w>
 wiz khalifa</w>
 stray kids</w>
-southbank centre</w>
+southbank center</w>
 show er
 humph ries</w>
 de vol
@@ -65244,7 +65244,7 @@ la is</w>
 a sti
 ju illet</w>
 har ness
-enrol meant</w>
+enroll meant</w>
 ðŁĻı ðŁı¿</w>
 ðŁĳĢ ðŁĳĢ
 hon ne</w>
@@ -68909,7 +68909,7 @@ hey man</w>
 âĪ Ģ
 me cum</w>
 jam mu
-defence man</w>
+defense man</w>
 carth age</w>
 moham ad</w>
 ill an</w>
@@ -70184,7 +70184,7 @@ london derry</w>
 gil ly</w>
 davi dj
 craf ter</w>
-water colours</w>
+water colors</w>
 triple h</w>
 super tuesday</w>
 papy rus</w>
@@ -70507,7 +70507,7 @@ phi les</w>
 os as</w>
 mi kayla</w>
 ma ham
-favour ite
+favor ite
 bl ane</w>
 ba sto
 auer bach</w>
@@ -71924,7 +71924,7 @@ bas sad
 waveleng th</w>
 van n</w>
 or me</w>
-neighbour hoods</w>
+neighbor hoods</w>
 jersey city</w>
 fu te
 car adele
@@ -84841,7 +84841,7 @@ le ti
 la dd
 jc ps</w>
 heal ers</w>
-greys abc</w>
+grays abc</w>
 fair mount</w>
 bru v</w>
 anton in</w>
@@ -89237,7 +89237,7 @@ plin th</w>
 ic l</w>
 hen do</w>
 den euve</w>
-colour pop
+color pop
 ch t
 burger day</w>
 bor rows</w>
@@ -91247,7 +91247,7 @@ hoo pers</w>
 don ned</w>
 do sed</w>
 d illi
-centre piece</w>
+center piece</w>
 blog spot</w>
 tu so</w>
 t mo</w>
@@ -95968,7 +95968,7 @@ mce wen</w>
 mar ner</w>
 malam ute</w>
 made myday</w>
-labour day</w>
+labor day</w>
 da ar
 cott age
 ban u</w>
@@ -96784,7 +96784,7 @@ blood stream</w>
 always sin
 ai kman</w>
 whad dup</w>
-un authorised</w>
+un authorized</w>
 topbrew stues</w>
 sea horses</w>
 remitt ances</w>
@@ -97855,7 +97855,7 @@ c ati
 actionnews jax</w>
 w st</w>
 shot guns</w>
-scottish labour</w>
+scottish labor</w>
 sau stin</w>
 new single</w>
 merr ill
@@ -104385,7 +104385,7 @@ vox el</w>
 vig go</w>
 tw ay
 thunder cats</w>
-thru way</w>
+through way</w>
 star ke</w>
 shepp ey</w>
 plat ts</w>
@@ -104893,7 +104893,7 @@ po sto
 pieter sen</w>
 n sa
 lu mi</w>
-favour it
+favor it
 de throne</w>
 cy d</w>
 youn gh
@@ -107032,7 +107032,7 @@ eas a</w>
 duchen e</w>
 ding y</w>
 d xc</w>
-city centre</w>
+city center</w>
 che sham</w>
 caloo can</w>
 ant am
@@ -107098,7 +107098,7 @@ a ang</w>
 war ring
 wal ru
 vo sa</w>
-thru xton</w>
+through xton</w>
 the dragon
 senior bowl</w>
 ree der</w>
@@ -114255,7 +114255,7 @@ hebri dean</w>
 fountain pen</w>
 fet ches</w>
 de ems</w>
-child labour</w>
+child labor</w>
 bo ren</w>
 adu ba</w>
 vi f</w>
@@ -117881,7 +117881,7 @@ ani shi</w>
 ag day</w>
 ðŁĻĮ ðŁĳı</w>
 ðŁĲ¶ ðŁĴķ</w>
-thru ster</w>
+through ster</w>
 th ya</w>
 t wat
 solic it</w>
@@ -118509,7 +118509,7 @@ match day
 k inston</w>
 hs baseball</w>
 he tty</w>
-fulfil meant</w>
+fulfill meant</w>
 ful ster</w>
 earl ham</w>
 dev ita</w>
@@ -120227,7 +120227,7 @@ it em
 ilo g</w>
 ie h</w>
 fe est</w>
-favour ited</w>
+favor ited</w>
 far in</w>
 debar linea</w>
 comp ton
@@ -122155,7 +122155,7 @@ ac mi</w>
 abe okuta</w>
 ðŁĳĮ ðŁĴķ</w>
 âĽ ª</w>
-wanna one
+want to one
 un complicated</w>
 tyra banks</w>
 twitter land</w>
@@ -122318,7 +122318,7 @@ jo you
 instinc tively</w>
 hench men</w>
 haddon field</w>
-flavour ful</w>
+flavor ful</w>
 ex a
 en al
 el um
@@ -122981,7 +122981,7 @@ happ yn
 epic games</w>
 edward barber</w>
 dy nat
-colour pop</w>
+color pop</w>
 cal var
 bur wood</w>
 bo dom</w>
@@ -123354,7 +123354,7 @@ worl duk</w>
 we ms</w>
 un ranked</w>
 traff icker</w>
-thru sters</w>
+through sters</w>
 ta wan</w>
 stÃ¼ n</w>
 stephan opoulos</w>
@@ -125743,7 +125743,7 @@ made jski</w>
 jah re</w>
 itas ca</w>
 iam su</w>
-honour ary</w>
+honor ary</w>
 ho ve
 hin ojo
 from is</w>
@@ -126303,7 +126303,7 @@ z elle</w>
 willand grace</w>
 watson ottawa</w>
 v elli</w>
-un recognisable</w>
+un recognizable</w>
 to ti</w>
 ti bi
 talk live</w>
@@ -127495,7 +127495,7 @@ eli pe</w>
 ed ler</w>
 d ld
 cinque terre</w>
-centre ville</w>
+center ville</w>
 cat rina</w>
 c gy
 c bus
@@ -128637,7 +128637,7 @@ marac as</w>
 leon or</w>
 ki drobot</w>
 juer gen</w>
-job centre</w>
+job center</w>
 inter tidal</w>
 hen shall</w>
 gom usic</w>
@@ -128783,7 +128783,7 @@ fu shi</w>
 ema w</w>
 defec tors</w>
 d Ã¶
-colour way</w>
+color way</w>
 blues man</w>
 bac i</w>
 amers foort</w>
@@ -130977,7 +130977,7 @@ r mcf</w>
 punk rock
 nas sr</w>
 n once</w>
-mould ings</w>
+mold ings</w>
 megali thic</w>
 l ann
 kamenri der
@@ -139189,7 +139189,7 @@ pan ahi</w>
 ob lak</w>
 now y</w>
 n do
-metro centre</w>
+metro center</w>
 matt bevin</w>
 li thia</w>
 keele university</w>
@@ -141200,7 +141200,7 @@ hos king</w>
 g ph</w>
 fn q</w>
 file ish
-favour ing</w>
+favor ing</w>
 fa an</w>
 eye lets</w>
 ele s
@@ -142609,7 +142609,7 @@ fort worth
 excu sed</w>
 dundal k
 dugg ery</w>
-defence hq</w>
+defense hq</w>
 blackpool fc</w>
 b ingle</w>
 air amb</w>
@@ -142757,7 +142757,7 @@ twit chy</w>
 tube strike</w>
 try pto
 trin os</w>
-the centre</w>
+the center</w>
 tam uc</w>
 steve yeun</w>
 sp es</w>
@@ -149563,7 +149563,7 @@ hoo g</w>
 heg seth</w>
 gulben kian</w>
 fraser burgh</w>
-enrol lees</w>
+enroll lees</w>
 endo vascular</w>
 disc loses</w>
 coss acks</w>
@@ -150819,7 +150819,7 @@ con fine</w>
 chur a</w>
 charli ze
 cha uns</w>
-centre point</w>
+center point</w>
 broad city</w>
 bou let</w>
 bo al</w>
@@ -155173,7 +155173,7 @@ gh oops</w>
 gary clark
 flatt ens</w>
 disper sing</w>
-defence less</w>
+defense less</w>
 cyanogen mod</w>
 culver city</w>
 creepi er</w>
@@ -157318,7 +157318,7 @@ w api</w>
 veteran s
 u selection</w>
 tvweek logies</w>
-thru string</w>
+through string</w>
 suf tum</w>
 stu die</w>
 spo tt</w>
@@ -157865,7 +157865,7 @@ dear den</w>
 dand an</w>
 cu pped</w>
 connol ly
-colour less</w>
+color less</w>
 character art</w>
 bu stelo</w>
 brech ts</w>
@@ -160892,7 +160892,7 @@ zi ya</w>
 z ula</w>
 whitney houston</w>
 upp ingham</w>
-thru st
+through st
 thero pod</w>
 technique also</w>
 t ftp</w>
@@ -161905,7 +161905,7 @@ found ling</w>
 ff x
 europe forculture</w>
 dra ig</w>
-defence forces</w>
+defense forces</w>
 cy clin
 cos grave</w>
 corel draw</w>
@@ -163816,7 +163816,7 @@ e gging</w>
 duc tile</w>
 duc ale</w>
 diri gida</w>
-colour ways</w>
+color ways</w>
 celebr ando</w>
 brun ell</w>
 brain stormed</w>
@@ -165680,7 +165680,7 @@ pas anga</w>
 pa ils</w>
 one piece
 ol athe
-neighbour hood
+neighbor hood
 nav ox</w>
 n alla</w>
 miamis burg</w>
@@ -169810,7 +169810,7 @@ tune z</w>
 trump now</w>
 tool ate</w>
 to bie</w>
-thru shes</w>
+through shes</w>
 the henryford</w>
 te esta</w>
 tanehisico ates</w>
@@ -171820,7 +171820,7 @@ dic amillo</w>
 de compressing</w>
 dal er</w>
 commissions open</w>
-colour ful
+color ful
 clu cas</w>
 clayne crawford</w>
 ckin chen</w>
@@ -171896,7 +171896,7 @@ feas ance</w>
 evic z</w>
 dipp goi</w>
 devop sdays</w>
-defence minindia</w>
+defense minindia</w>
 con sternation</w>
 con gi</w>
 christmas giftideas</w>
@@ -171966,7 +171966,7 @@ gar ni</w>
 g xp</w>
 far nell</w>
 fad ers</w>
-enrol ments</w>
+enroll ments</w>
 ene o</w>
 do ak
 dd yn</w>
@@ -173119,7 +173119,7 @@ field mann</w>
 eur active</w>
 er man
 enor rhea</w>
-doughnut day</w>
+donut day</w>
 dista ste</w>
 did as</w>
 depress ant</w>
@@ -173225,7 +173225,7 @@ trou ve</w>
 tox ics</w>
 together weswarm</w>
 to pa</w>
-thru sts</w>
+through sts</w>
 thi stogether</w>
 th oops</w>
 sust dev</w>
@@ -173762,7 +173762,7 @@ sci atic</w>
 sch em</w>
 s big
 rol les</w>
-re organisation</w>
+re organization</w>
 priest field</w>
 pie zo
 ph art</w>
@@ -174399,7 +174399,7 @@ acom ic
 ach opra</w>
 (âī§ âĪĩ
 yan asta
-welsh labour</w>
+welsh labor</w>
 tur man</w>
 trans ni
 thehobbit movie</w>
@@ -174800,7 +174800,7 @@ cafe terias</w>
 brad ys</w>
 bp brewing</w>
 bi gup</w>
-banff centre</w>
+banff center</w>
 ba azi</w>
 audi r</w>
 are ason</w>
@@ -174839,7 +174839,7 @@ ro ker
 pett itt</w>
 pac u</w>
 op hie</w>
-neighbour ly</w>
+neighbor ly</w>
 mumbait raffic</w>
 mr tony
 med u</w>
@@ -177614,7 +177614,7 @@ ab sm</w>
 zebe dee</w>
 z wei</w>
 whistler blck
-voodoo doughnut</w>
+voodoo donut</w>
 venice biennale</w>
 vatten fall</w>
 une aten</w>
@@ -179476,7 +179476,7 @@ yoshino ya</w>
 worldkidney day</w>
 whisper ing
 wb z
-water colour
+water color
 w one</w>
 urban ized</w>
 uppere astside</w>
@@ -179780,7 +179780,7 @@ haz ar</w>
 gw d</w>
 grave side</w>
 gram atik</w>
-gonna hate</w>
+going to hate</w>
 gas olina</w>
 fre search</w>
 fair ings</w>
@@ -183708,7 +183708,7 @@ gsuite edu</w>
 gowar iker</w>
 gheor ghe</w>
 gend ry</w>
-flavour some</w>
+flavor some</w>
 eno te
 emancip ated</w>
 egyp te</w>
@@ -185460,7 +185460,7 @@ wi fes</w>
 wac cam
 var go</w>
 un ra</w>
-un organised</w>
+un organized</w>
 ti sane</w>
 threef old</w>
 spring flowers</w>
@@ -185600,7 +185600,7 @@ gd ny</w>
 gbbo final</w>
 gastron omia</w>
 eric andre</w>
-enrol lee</w>
+enroll lee</w>
 disen franchisement</w>
 diesel punk</w>
 di thering</w>
@@ -185777,7 +185777,7 @@ e wn</w>
 dow ding</w>
 dol lah</w>
 do stum</w>
-dis organised</w>
+dis organized</w>
 di pti</w>
 deejay ing</w>
 comprehen ding</w>
@@ -189790,7 +189790,7 @@ consor tia</w>
 colin dale</w>
 coal mine</w>
 cine mat
-centre town</w>
+center town</w>
 capric orns</w>
 brook ins</w>
 bridge stone
@@ -191909,7 +191909,7 @@ lili an
 li sted
 laure en</w>
 laten igh
-labour party</w>
+labor party</w>
 la plante</w>
 ko zel</w>
 kitty hawk</w>
@@ -192142,7 +192142,7 @@ w taf</w>
 vion net</w>
 ver celli</w>
 van af</w>
-tvin colour</w>
+tvin color</w>
 tor ist</w>
 the resi
 ten leytown</w>
@@ -193021,7 +193021,7 @@ san field</w>
 roi dery</w>
 revi ent</w>
 rein as</w>
-re organised</w>
+re organized</w>
 po que</w>
 patag onian</w>
 pap iss</w>
@@ -194589,7 +194589,7 @@ vampire weekend</w>
 v anga</w>
 upthe blues</w>
 uni fier</w>
-un favourable</w>
+un favorable</w>
 travel massive</w>
 tram ways</w>
 tr ng</w>
@@ -194993,7 +194993,7 @@ marsha ambrosius</w>
 mar isol
 ma shab
 lu le
-labour ing</w>
+labor ing</w>
 ko dy
 kil birnie</w>
 kal pa</w>
@@ -195456,7 +195456,7 @@ mag adheera</w>
 low sky</w>
 low ball</w>
 life buoy</w>
-labour leadership</w>
+labor leadership</w>
 kun u</w>
 kham oshi
 jun jud
@@ -195524,7 +195524,7 @@ sacaja wea</w>
 sab ai</w>
 rod ley</w>
 ri jk</w>
-re organising</w>
+re organizing</w>
 re locates</w>
 ration ed</w>
 rat tail</w>
@@ -198228,7 +198228,7 @@ ine ering</w>
 in putting</w>
 honor them</w>
 groen eveld</w>
-gotta seeit</w>
+got to seeit</w>
 fitz museum</w>
 fad own</w>
 esp o</w>
@@ -199021,7 +199021,7 @@ unfla ppable</w>
 uk y</w>
 trending orange</w>
 timo fey</w>
-thru sday</w>
+through sday</w>
 thor sen</w>
 thel er</w>
 that chers</w>
@@ -199377,7 +199377,7 @@ det mer</w>
 dese crate</w>
 dar vey</w>
 cri stie</w>
-colour fully</w>
+color fully</w>
 cel in
 capital onecup</w>
 bury fcofficial</w>
@@ -203341,7 +203341,7 @@ wherethecar sare</w>
 villa ggio</w>
 u iz</w>
 tin ian</w>
-thru pp</w>
+through pp</w>
 thr ou
 the fan
 tar kenton</w>
@@ -204778,7 +204778,7 @@ mu jh
 monarch sway</w>
 mizzou football</w>
 mir choff</w>
-milli metre</w>
+milli meter</w>
 men elik</w>
 mc daag</w>
 max y</w>
@@ -209322,7 +209322,7 @@ osucoach meyer</w>
 opp er
 o eh
 mullagh more</w>
-mis behaviour</w>
+mis behavior</w>
 mil dest</w>
 mall in</w>
 madmax furyroad</w>
@@ -209399,7 +209399,7 @@ wind jammer</w>
 wil ayat</w>
 week uk</w>
 us movie</w>
-un recognised</w>
+un recognized</w>
 tu cuman</w>
 toi mumbai</w>
 til ford</w>
@@ -210114,7 +210114,7 @@ motor plex</w>
 more wen
 mon ceau</w>
 mom mys</w>
-milli metres</w>
+milli meters</w>
 mat ina</w>
 magic man</w>
 mag tang
@@ -210299,7 +210299,7 @@ sed atives</w>
 sal ai</w>
 s rush
 robin thicke</w>
-re organise</w>
+re organize</w>
 re nova</w>
 raz avi</w>
 rambo donkeykong</w>
@@ -210780,7 +210780,7 @@ epi thet</w>
 ei dos</w>
 discipline equalsfreedom</w>
 democratshate america</w>
-defence day</w>
+defense day</w>
 curt smith</w>
 ctc mediaboy</w>
 crew men</w>
@@ -217574,7 +217574,7 @@ gol fon
 gi app
 fro ebel</w>
 flo rek</w>
-flavour ings</w>
+flavor ings</w>
 five fold</w>
 fir str
 eight fold</w>
@@ -220513,7 +220513,7 @@ ulla dulla</w>
 u ea
 twent yman</w>
 traut mann</w>
-trade centre</w>
+trade center</w>
 towno fficial</w>
 top cat</w>
 to losa</w>
@@ -222037,7 +222037,7 @@ slim ited</w>
 sli din</w>
 skillet music</w>
 shopp ers
-self defence</w>
+self defense</w>
 saxmun dham</w>
 sa ipa</w>
 s van</w>
@@ -224283,7 +224283,7 @@ de tt</w>
 cur dled</w>
 cre swick</w>
 conceptu alization</w>
-colour ings</w>
+color ings</w>
 clause sen</w>
 citys c</w>
 cis ne</w>
@@ -224856,7 +224856,7 @@ val lum</w>
 u hmmm</w>
 traffic chief
 trafficchief ng</w>
-thru xton
+through xton
 tholi prema</w>
 thene c</w>
 the walking
@@ -228115,7 +228115,7 @@ dad s
 d oud</w>
 curi eux</w>
 cowboy fb</w>
-colour ation</w>
+color ation</w>
 classic film</w>
 chri sn
 ching on</w>
@@ -228976,7 +228976,7 @@ co su
 co dex
 clau ss</w>
 ck ler</w>
-cityand colour</w>
+cityand color</w>
 chi mie</w>
 cardiff bay</w>
 capital stb</w>
@@ -233964,7 +233964,7 @@ ol hos</w>
 oc ket
 nes j
 n cats</w>
-my favourite
+my favorite
 musk aan</w>
 montal to</w>
 mon forte</w>
@@ -234077,7 +234077,7 @@ the fight
 tar vin</w>
 taj iri</w>
 syke sville</w>
-straight outta</w>
+straight out of</w>
 stock brokers</w>
 stobart group</w>
 ster ility</w>
@@ -235250,7 +235250,7 @@ distill ery
 disfru ta</w>
 diamond dring</w>
 deu sto</w>
-defence men</w>
+defense men</w>
 de anda</w>
 dd firish
 day tripper</w>
@@ -240795,7 +240795,7 @@ haber mas</w>
 h ounding</w>
 gregg rosenthal</w>
 gary leff</w>
-garden centre</w>
+garden center</w>
 photo g</w>
 forza italia</w>
 fibro blast</w>
@@ -245603,7 +245603,7 @@ ve kic</w>
 v lam
 unex amined</w>
 unbeliev ing</w>
-un labelled</w>
+un labeled</w>
 tur nal</w>
 transc athe
 tram mel</w>
@@ -249409,7 +249409,7 @@ cre atec
 coach t
 cher an</w>
 centri petal</w>
-centre for
+center for
 cc cu
 caÃ± ada</w>
 carpetb agger</w>
@@ -249456,7 +249456,7 @@ victori afalls</w>
 v do</w>
 under world
 ultra suede</w>
-trafford centre</w>
+trafford center</w>
 thecameron boyce</w>
 the killing</w>
 the captain</w>
@@ -256080,7 +256080,7 @@ ur za</w>
 uof denver</w>
 underestim ation</w>
 un oh</w>
-troopingthe colour</w>
+troopingthe color</w>
 tre mont
 tok ina</w>
 thelittle idiot</w>

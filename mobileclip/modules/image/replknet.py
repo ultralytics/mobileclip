@@ -1,7 +1,7 @@
 # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
 
 #
-# For acknowledgement see accompanying ACKNOWLEDGEMENTS file.
+# For acknowledgment see accompanying ACKNOWLEDGMENTS file.
 # Copyright (C) 2024 Apple Inc. All rights reserved.
 #
 

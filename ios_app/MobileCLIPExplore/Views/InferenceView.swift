@@ -229,7 +229,7 @@ struct InferenceView: View {
         }
 
         // set up structured tasks (important -- this means the child tasks
-        // are cancelled when the parent is cancelled)
+        // are canceled when the parent is canceled)
         async let distributeFrames: () = {
             [framesToClassifyContinuation, framesToDisplayContinuation] in
             for await sampleBuffer in frames {
