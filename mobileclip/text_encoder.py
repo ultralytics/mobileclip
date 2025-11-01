@@ -163,8 +163,8 @@ class TextTransformer(nn.Module):
 
         Args:
             text_tokens: a tensor of token indices. Shape: [batch_size, context_length]
-            key_padding_mask: a tensor of boolean values as the padding mask.
-                Shape: [batch_size, context_length]
+            key_padding_mask: a tensor of boolean values as the padding mask
+                of shape [batch_size, context_length]
             return_all_tokens: a boolean flag to return all tokens, defaults to False
                 to return only EOT token embedding.
 

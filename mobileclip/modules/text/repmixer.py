@@ -77,8 +77,8 @@ class RepMixer(nn.Module):
     """
     Reparameterizable token mixer.
 
-    For more details, please refer to our paper:
-    `FastViT: A Fast Hybrid Vision Transformer using Structural Reparameterization <https://arxiv.org/pdf/2303.14189.pdf>`_
+    For more details, please refer to our paper: `FastViT: A Fast Hybrid Vision Transformer using Structural
+    Reparameterization <https://arxiv.org/pdf/2303.14189.pdf>`_
     """
 
     def __init__(
@@ -189,8 +189,8 @@ class RepMixerBlock(nn.Module):
     """
     Implementation of Metaformer block with RepMixer as token mixer.
 
-    For more details on Metaformer structure, please refer to:
-    `MetaFormer Is Actually What You Need for Vision <https://arxiv.org/pdf/2111.11418.pdf>`_
+    For more details on Metaformer structure, please refer to: `MetaFormer Is Actually What You Need for Vision
+    <https://arxiv.org/pdf/2111.11418.pdf>`_
     """
 
     def __init__(

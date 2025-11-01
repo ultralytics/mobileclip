@@ -71,13 +71,12 @@ def ignore_exception_with_warning(message: str) -> None:
     when an uncaught (non-tolerable) exception "E2" raises down the road. Then, the log will contain two stack traces
     for E1, E2. When looking for errors in logs, users should look for E2, but they may find E1.
 
-    This function appends "(WARNING)" at the end of all lines of the E1 traceback, so
-    that the user can distinguish E1 from uncaught exception E2.
+    This function appends "(WARNING)" at the end of all lines of the E1 traceback, so that the user can distinguish E1
+    from uncaught exception E2.
 
     Args:
         message: Extra explanation and context for debugging. (Note: the exception obj
-    will be automatically fetched from python. No need to pass it as an argument or as
-    message)
+            will be automatically fetched from python. No need to pass it as an argument or as message)
     """
     warning(f"{message}:\n{traceback.format_exc()}".replace("\n", "\n(WARNING)"))
 
