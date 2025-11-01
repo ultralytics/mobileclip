@@ -138,8 +138,8 @@ class LearnablePositionalEmbedding(nn.Module):
 
 class MultiHeadAttention(nn.Module):
     """
-    This layer applies a multi-head self- or cross-attention as described in
-    `Attention is all you need <https://arxiv.org/abs/1706.03762>`_ paper.
+    This layer applies a multi-head self- or cross-attention as described in `Attention is all you need
+    <https://arxiv.org/abs/1706.03762>`_ paper.
 
     Args:
         embed_dim (int): :math:`C_{in}` from an expected input of size :math:`(N, S, C_{in})`
@@ -147,13 +147,12 @@ class MultiHeadAttention(nn.Module):
         attn_dropout (Optional[float]): Attention dropout. Default: 0.0
         bias (Optional[bool]): Use bias or not. Default: ``True``
 
-    Shape:
+    Notes:
         - Input:
            - Query tensor (x_q) :math:`(N, S, C_{in})` where :math:`N` is batch size, :math:`S` is number of source tokens,
-        and :math:`C_{in}` is input embedding dim
+        and: math:`C_{in}` is input embedding dim
            - Optional Key-Value tensor (x_kv) :math:`(N, T, C_{in})` where :math:`T` is number of target tokens
         - Output: same shape as the input
-
     """
 
     def __init__(
@@ -305,7 +304,8 @@ class MultiHeadAttention(nn.Module):
 
 class TransformerEncoder(nn.Module):
     """
-    This class defines the pre-norm `Transformer encoder <https://arxiv.org/abs/1706.03762>`_
+    This class defines the pre-norm `Transformer encoder <https://arxiv.org/abs/1706.03762>`_.
+
     Args:
         embed_dim: :math:`C_{in}` from an expected input of size :math:`(N, P, C_{in})`.
         ffn_latent_dim: Inner dimension of the FFN.
@@ -316,9 +316,9 @@ class TransformerEncoder(nn.Module):
         transformer_norm_layer: Normalization layer. Default: layer_norm.
         stochastic_dropout: Stochastic dropout setting. Default: 0.0.
 
-    Shape:
+    Notes:
         - Input: :math:`(N, P, C_{in})` where :math:`N` is batch size, :math:`P` is number of patches,
-        and :math:`C_{in}` is input embedding dim
+        and: math:`C_{in}` is input embedding dim
         - Output: same shape as the input
     """
 

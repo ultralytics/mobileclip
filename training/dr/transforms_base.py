@@ -130,7 +130,8 @@ def compose_from_config(config_tr: dict[str, Any]) -> torch.nn.Module:
     Args:
         config_tr: A dictionary of transformation parameters.
 
-    Returns a composition of transformations.
+    Returns:
+        a composition of transformations.
     """
     config_tr = clean_config(config_tr)
     if "timm_resize_crop_norm" in config_tr:
@@ -147,11 +148,9 @@ class MixUp(torch.nn.Module):
     r"""
     MixUp image transformation.
 
-    For an input x the
-    output is :math:`\lambda x + (1-\lambda) x_p` , where :math:`x_p` is a
-    random permutation of `x` along the batch dimension, and lam is a random
-    number between 0 and 1.
-    See https://arxiv.org/abs/1710.09412 for more details.
+    For an input x the output is :math:`\lambda x + (1-\lambda) x_p` , where :math:`x_p` is a random permutation of `x`
+    along the batch dimension, and lam is a random number between 0 and 1. See https://arxiv.org/abs/1710.09412 for more
+    details.
     """
 
     def __init__(self, alpha: float = 1.0, p: float = 1.0, div_by: float = 1.0, *args, **kwargs) -> None:
@@ -232,8 +231,7 @@ class CutMix(torch.nn.Module):
     r"""
     CutMix image transformation.
 
-    Please see the full paper for more details:
-    https://arxiv.org/pdf/1905.04899.pdf
+    Please see the full paper for more details: https://arxiv.org/pdf/1905.04899.pdf
     """
 
     def __init__(self, alpha: float = 1.0, p: float = 1.0, *args, **kwargs) -> None:

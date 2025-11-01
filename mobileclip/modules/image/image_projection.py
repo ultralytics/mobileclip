@@ -20,7 +20,7 @@ class GlobalPool(nn.Module):
         pool_type (Optional[str]): Pooling type. It can be mean, rms, or abs. Default: `mean`
         keep_dim (Optional[bool]): Do not squeeze the dimensions of a tensor. Default: `False`
 
-    Shape:
+    Notes:
         - Input: :math:`(N, C, H, W)` or :math:`(N, C, D, H, W)`
         - Output: :math:`(N, C, 1, 1)` or :math:`(N, C, 1, 1, 1)` if keep_dim else :math:`(N, C)`
     """

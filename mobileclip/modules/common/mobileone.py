@@ -18,8 +18,7 @@ class SEBlock(nn.Module):
     """
     Squeeze and Excite module.
 
-    Pytorch implementation of `Squeeze-and-Excitation Networks` -
-    https://arxiv.org/pdf/1709.01507.pdf
+    Pytorch implementation of `Squeeze-and-Excitation Networks` - https://arxiv.org/pdf/1709.01507.pdf
     """
 
     def __init__(self, in_channels: int, rd_ratio: float = 0.0625) -> None:
@@ -181,10 +180,9 @@ class MobileOneBlock(nn.Module):
         return self.activation(self.se(out))
 
     def reparameterize(self):
-        """Following works like `RepVGG: Making VGG-style ConvNets Great Again` -
-        https://arxiv.org/pdf/2101.03697.pdf. We re-parameterize multi-branched
-        architecture used at training time to obtain a plain CNN-like structure
-        for inference.
+        """Following works like `RepVGG: Making VGG-style ConvNets Great Again` - https://arxiv.org/pdf/2101.03697.pdf.
+        We re-parameterize multi-branched architecture used at training time to obtain a plain CNN-like
+        structure for inference.
         """
         if self.inference_mode:
             return
@@ -213,8 +211,8 @@ class MobileOneBlock(nn.Module):
         self.inference_mode = True
 
     def _get_kernel_bias(self) -> tuple[torch.Tensor, torch.Tensor]:
-        """Method to obtain re-parameterized kernel and bias.
-        Reference: https://github.com/DingXiaoH/RepVGG/blob/main/repvgg.py#L83.
+        """Method to obtain re-parameterized kernel and bias. Reference:
+        https://github.com/DingXiaoH/RepVGG/blob/main/repvgg.py#L83.
 
         Returns:
             Tuple of (kernel, bias) after fusing branches.
@@ -248,8 +246,8 @@ class MobileOneBlock(nn.Module):
         return kernel_final, bias_final
 
     def _fuse_bn_tensor(self, branch: nn.Sequential | nn.BatchNorm2d) -> tuple[torch.Tensor, torch.Tensor]:
-        """Method to fuse batchnorm layer with preceeding conv layer.
-        Reference: https://github.com/DingXiaoH/RepVGG/blob/main/repvgg.py#L95.
+        """Method to fuse batchnorm layer with preceeding conv layer. Reference:
+        https://github.com/DingXiaoH/RepVGG/blob/main/repvgg.py#L95.
 
         Args:
             branch: Sequence of ops to be fused.

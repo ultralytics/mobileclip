@@ -1,6 +1,6 @@
 # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
 
-name: test
+name: CI
 
 on:
   push:
@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.11, 3.12]
-        pytorch-version: [2.5.0, 2.6.0]
+        python-version: [3.11, 3.13]
+        pytorch-version: [2.5.0, 2.8.0]
     
     steps:
       - name: Checkout code

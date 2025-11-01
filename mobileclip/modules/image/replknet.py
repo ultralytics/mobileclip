@@ -16,8 +16,8 @@ class ReparamLargeKernelConv(nn.Module):
     """
     Building Block of RepLKNet.
 
-    This class defines overparameterized large kernel conv block
-    introduced in `RepLKNet <https://arxiv.org/abs/2203.06717>`_
+    This class defines overparameterized large kernel conv block introduced in `RepLKNet
+    <https://arxiv.org/abs/2203.06717>`_
 
     Reference: https://github.com/DingXiaoH/RepLKNet-pytorch
     """
@@ -96,8 +96,7 @@ class ReparamLargeKernelConv(nn.Module):
         return self.activation(self.se(out))
 
     def get_kernel_bias(self) -> tuple[torch.Tensor, torch.Tensor]:
-        """Method to obtain re-parameterized kernel and bias.
-        Reference: https://github.com/DingXiaoH/RepLKNet-pytorch.
+        """Method to obtain re-parameterized kernel and bias. Reference: https://github.com/DingXiaoH/RepLKNet-pytorch.
 
         Returns:
             Tuple of (kernel, bias) after fusing branches.
