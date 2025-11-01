@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.11, 3.14]
-        pytorch-version: [2.5.0, 2.6.0]
+        pytorch-version: [2.5.0, 2.8.0]
     
     steps:
       - name: Checkout code
