@@ -97,6 +97,7 @@ class ReparamLargeKernelConv(nn.Module):
 
     def get_kernel_bias(self) -> tuple[torch.Tensor, torch.Tensor]:
         """Method to obtain re-parameterized kernel and bias. Reference: https://github.com/DingXiaoH/RepLKNet-pytorch.
+
         Returns:
             Tuple of (kernel, bias) after fusing branches.
         """

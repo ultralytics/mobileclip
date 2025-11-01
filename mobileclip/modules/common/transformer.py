@@ -304,7 +304,7 @@ class MultiHeadAttention(nn.Module):
 
 class TransformerEncoder(nn.Module):
     """
-    This class defines the pre-norm `Transformer encoder <https://arxiv.org/abs/1706.03762>`_
+    This class defines the pre-norm `Transformer encoder <https://arxiv.org/abs/1706.03762>`_.
 
     Args:
         embed_dim: :math:`C_{in}` from an expected input of size :math:`(N, P, C_{in})`.
