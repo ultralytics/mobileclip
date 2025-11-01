@@ -435,15 +435,16 @@ class Compose:
             params: Transformation parameters to be reapplied.
             img2: Second tensor to be used for mixing transformations.
 
-        The value of `params` can be None or empty in 3 cases:
+        Returns:
+            A Tuple of a transformed image and a dictionary with transformation
+            parameters.
+
+        Notes:
+            The value of `params` can be None or empty in 3 cases:
             1) `params=None` in apply(): The value should be generated randomly,
             2) `params=None` in reapply(): Transformation was randomly skipped during
             generation time,
             3) `params=()`: Transformation has no random parameters.
-
-        Returns:
-            A Tuple of a transformed image and a dictionary with transformation
-            parameters.
         """
         params = dict()
         for t_name, t in self.transforms:
@@ -482,15 +483,16 @@ class Compose:
             params: Transformation parameters to be reapplied.
             img2: Second tensor to be used for mixing transformations.
 
-        The value of `params` can be None or empty in 3 cases:
+        Returns:
+            A Tuple of a transformed image and a dictionary with transformation
+            parameters.
+
+        Notes:
+            The value of `params` can be None or empty in 3 cases:
             1) `params=None` in apply(): The value should be generated randomly,
             2) `params=None` in reapply(): Transformation was randomly skipped during
             generation time,
             3) `params=()`: Transformation has no random parameters.
-
-        Returns:
-            A Tuple of a transformed image and a dictionary with transformation
-            parameters.
         """
         for t_name, t in self.transforms:
             if t_name in params:
