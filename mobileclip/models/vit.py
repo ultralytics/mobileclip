@@ -46,7 +46,7 @@ class ConvNormAct(nn.Module):
             int((kernel_size[i] - 1) / 2) * dilation[i] for i in range(N)]``).
         groups: Number of groups in convolution. Default: ``1``.
         bias: Use bias. Default: ``False``.
-        padding_mode: Padding mode ('zeros', 'reflect', 'replicate' or 'circular'). Default: ``zeros`.
+        padding_mode: Padding mode ('zeros', 'reflect', 'replicate' or 'circular'). Default: ``zeros``.
         use_norm: Use normalization layer after convolution. Default: ``True``.
         use_act: Use activation layer after convolution (or convolution and normalization). Default: ``True``.
         norm_layer: If not None, the provided normalization layer object will be used.
