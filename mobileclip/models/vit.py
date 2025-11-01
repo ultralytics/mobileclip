@@ -39,32 +39,26 @@ class ConvNormAct(nn.Module):
             :math:`(bs, C_{out}, Y_{1}, ..., Y_{N})`.
         kernel_size: Kernel size for convolution. An integer, or tuple of length ``N``.
         stride: Stride for convolution. An integer, or tuple of length ``N``. Default: 1.
-        dilation: Dilation rate for convolution. An integer, or tuple of length ``N``.
-            Default: ``1``.
+        dilation: Dilation rate for convolution. An integer, or tuple of length ``N``. Default: ``1``.
         padding: Padding for convolution. An integer, or tuple of length ``N``.
             If not specified, padding is automatically computed based on kernel size and
             dilation range. Default : ``None`` (equivalent to ``[
             int((kernel_size[i] - 1) / 2) * dilation[i] for i in range(N)]``).
         groups: Number of groups in convolution. Default: ``1``.
         bias: Use bias. Default: ``False``.
-        padding_mode: Padding mode ('zeros', 'reflect', 'replicate' or 'circular').
-            Default: ``zeros``.
+        padding_mode: Padding mode ('zeros', 'reflect', 'replicate' or 'circular'). Default: ``zeros`.
         use_norm: Use normalization layer after convolution. Default: ``True``.
-        use_act: Use activation layer after convolution (or convolution and normalization).
-            Default: ``True``.
+        use_act: Use activation layer after convolution (or convolution and normalization). Default: ``True``.
         norm_layer: If not None, the provided normalization layer object will be used.
             Otherwise, a normalization object will be created based on config
             ``model.normalization.*`` opts.
         act_layer: If not None, the provided activation function will be used.
             Otherwise, an activation function will be created based on config
             ``model.activation.*`` opts.
-
-    Shape:
+    Notes:
         - Input: :math:`(bs, C_{in}, X_{1}, ..., X_{N})`.
         - Output: :math:`(bs, C_{out}, Y_{1}, ..., Y_{N})`.
-
-    .. note::
-        For depth-wise convolution, `groups=C_{in}=C_{out}`.
+        - For depth-wise convolution, `groups=C_{in}=C_{out}`.
     """
 
     def __init__(
@@ -171,8 +165,9 @@ class ConvNormAct(nn.Module):
 
 class VisionTransformer(nn.Module):
     """
-    This class defines the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model implementation
-    is inspired from `Early Convolutions Help Transformers See Better <https://arxiv.org/abs/2106.14881>`_.
+    This class defines the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model
+    implementation is inspired from `Early Convolutions Help Transformers See Better
+    <https://arxiv.org/abs/2106.14881>`_.
 
     .. note::
         Our implementation is different from the original implementation in two ways:

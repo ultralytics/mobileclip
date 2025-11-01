@@ -132,7 +132,6 @@ def compose_from_config(config_tr: dict[str, Any]) -> torch.nn.Module:
 
     Returns:
         a composition of transformations.
-
     """
     config_tr = clean_config(config_tr)
     if "timm_resize_crop_norm" in config_tr:
