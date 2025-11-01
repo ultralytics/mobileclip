@@ -55,6 +55,7 @@ class ConvNormAct(nn.Module):
         act_layer: If not None, the provided activation function will be used.
             Otherwise, an activation function will be created based on config
             ``model.activation.*`` opts.
+
     Notes:
         - Input: :math:`(bs, C_{in}, X_{1}, ..., X_{N})`.
         - Output: :math:`(bs, C_{out}, Y_{1}, ..., Y_{N})`.
