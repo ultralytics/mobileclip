@@ -119,8 +119,7 @@ class TextTransformer(nn.Module):
         self.causal_masking = cfg["causal_masking"]
 
     def forward_embedding(self, text_tokens: Tensor) -> Tensor:
-        """
-        Return text embedding for all tokens.
+        """Return text embedding for all tokens.
 
         Args:
             text_tokens: a tensor of token indices. Shape: [batch_size, context_length]
@@ -158,15 +157,13 @@ class TextTransformer(nn.Module):
         *args,
         **kwargs,
     ) -> Tensor:
-        """
-        Return text token embeddings.
+        """Return text token embeddings.
 
         Args:
             text_tokens: a tensor of token indices. Shape: [batch_size, context_length]
-            key_padding_mask: a tensor of boolean values as the padding mask
-                of shape [batch_size, context_length]
-            return_all_tokens: a boolean flag to return all tokens, defaults to False
-                to return only EOT token embedding.
+            key_padding_mask: a tensor of boolean values as the padding mask of shape [batch_size, context_length]
+            return_all_tokens: a boolean flag to return all tokens, defaults to False to return only EOT token
+                embedding.
 
         Returns:
             A tensor of [batch_size, context_length, hidden_dim] if return_all_tokens is

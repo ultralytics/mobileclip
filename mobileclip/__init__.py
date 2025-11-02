@@ -32,8 +32,7 @@ def create_model_and_transforms(
     reparameterize: bool | None = True,
     device: str | torch.device = "cpu",
 ) -> tuple[nn.Module, Any, Any]:
-    """
-    Method to instantiate model and pre-processing transforms necessary for inference.
+    """Method to instantiate model and pre-processing transforms necessary for inference.
 
     Args:
         model_name: Model name. Choose from ['mobileclip_s0', 'mobileclip_s1', 'mobileclip_s2', 'mobileclip_b']

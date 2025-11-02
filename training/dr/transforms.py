@@ -132,8 +132,7 @@ class RandomHorizontalFlip(T.RandomHorizontalFlip, Compressible):
     """Extending PyTorch's RandomHorizontalFlip to reapply a given transformation."""
 
     def forward(self, img: Tensor, params: bool | None = None) -> tuple[Tensor, bool]:
-        """
-        Transform an image randomly or reapply based on given parameters.
+        """Transform an image randomly or reapply based on given parameters.
 
         Args:
             img (PIL Image or Tensor): Image to be flipped.
@@ -170,8 +169,7 @@ class RandAugment(T.RandAugment, Compressible):
     ]
 
     def __init__(self, p: float = 1.0, *args, **kwargs) -> None:
-        """
-        Initialize RandAugment with probability p of augmentation.
+        """Initialize RandAugment with probability p of augmentation.
 
         Args:
             p: The probability of applying transformation. A float in [0, 1.0].
@@ -182,8 +180,7 @@ class RandAugment(T.RandAugment, Compressible):
     def forward(
         self, img: Tensor, params: list[tuple[str, float]] | None = None, **kwargs
     ) -> tuple[Tensor, list[tuple[str, float]]]:
-        """
-        Transform an image randomly or reapply based on given parameters.
+        """Transform an image randomly or reapply based on given parameters.
 
         Args:
             img (PIL Image or Tensor): Image to be transformed.
@@ -246,8 +243,7 @@ class RandomErasing(T.RandomErasing, Compressible):
     """Extending PyTorch's RandomErasing to reapply a given transformation."""
 
     def forward(self, img: Tensor, params: tuple | None = None, **kwargs) -> tuple[Tensor, tuple]:
-        """
-        Transform an image randomly or reapply based on given parameters.
+        """Transform an image randomly or reapply based on given parameters.
 
         Args:
             img (Tensor): Tensor image to be erased.
@@ -427,8 +423,7 @@ class Compose:
         after_collate: bool | None = False,
         size: tuple[int, int] | None = None,
     ) -> tuple[Tensor, dict[str, Any]]:
-        """
-        Apply a transformation to two images and return augmentation parameters.
+        """Apply a transformation to two images and return augmentation parameters.
 
         Args:
             img: A tensor to be transformed.
@@ -475,8 +470,7 @@ class Compose:
         img2: Tensor = None,
         size: tuple[int, int] | None = None,
     ) -> tuple[Tensor, dict[str, Any]]:
-        """
-        Reapply transformations to an image given augmentation parameters.
+        """Reapply transformations to an image given augmentation parameters.
 
         Args:
             img: A tensor to be transformed.
@@ -577,8 +571,7 @@ class Compose:
 
 
 def compose_from_config(config: dict[str, Any]) -> Compose:
-    """
-    Initialize transformations given the dataset name and configurations.
+    """Initialize transformations given the dataset name and configurations.
 
     Args:
         config: A dictionary of augmentation parameters.
@@ -593,8 +586,7 @@ def compose_from_config(config: dict[str, Any]) -> Compose:
 
 
 def before_collate_config(config: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    """
-    Return configs with resize/crop transformations to pass to data loader.
+    """Return configs with resize/crop transformations to pass to data loader.
 
     Only transformations that cannot be applied after data collate are
     composed. For example, RandomResizedCrop has to be applied before collate
@@ -612,8 +604,7 @@ def after_collate_config(config: dict[str, dict[str, Any]]) -> dict[str, dict[st
 
 
 def before_collate_apply(sample: Tensor, transform: Compose, num_samples: int) -> tuple[Tensor, Tensor]:
-    """
-    Return multiple samples applying the transformations.
+    """Return multiple samples applying the transformations.
 
     Args:
         sample: A single sample to be randomly transformed.
