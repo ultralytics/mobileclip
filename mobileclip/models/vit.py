@@ -28,8 +28,7 @@ from mobileclip.modules.image.image_projection import SimpleImageProjectionHead
 
 
 class ConvNormAct(nn.Module):
-    """
-    Applies an N-dimensional convolution over an input.
+    """Applies an N-dimensional convolution over an input.
 
     Args:
         cfg: Model configuration.
@@ -38,9 +37,8 @@ class ConvNormAct(nn.Module):
         kernel_size: Kernel size for convolution. An integer, or tuple of length ``N``.
         stride: Stride for convolution. An integer, or tuple of length ``N``. Default: 1.
         dilation: Dilation rate for convolution. An integer, or tuple of length ``N``. Default: ``1``.
-        padding: Padding for convolution. An integer, or tuple of length ``N``.
-            If not specified, padding is automatically computed based on kernel size and
-            dilation range. Default : ``None`` (equivalent to ``[
+        padding: Padding for convolution. An integer, or tuple of length ``N``. If not specified, padding is
+            automatically computed based on kernel size and dilation range. Default : ``None`` (equivalent to ``[
             int((kernel_size[i] - 1) / 2) * dilation[i] for i in range(N)]``).
         groups: Number of groups in convolution. Default: ``1``.
         bias: Use bias. Default: ``False``.
@@ -161,10 +159,9 @@ class ConvNormAct(nn.Module):
 
 
 class VisionTransformer(nn.Module):
-    """
-    This class defines the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model
-    implementation is inspired from `Early Convolutions Help Transformers See Better
-    <https://arxiv.org/abs/2106.14881>`_.
+    """This class defines the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model
+    implementation is inspired from `Early Convolutions Help Transformers See
+    Better <https://arxiv.org/abs/2106.14881>`_.
 
     .. note::
         Our implementation is different from the original implementation in two ways:
