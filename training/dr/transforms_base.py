@@ -124,8 +124,7 @@ def clean_config(config: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]
 
 
 def compose_from_config(config_tr: dict[str, Any]) -> torch.nn.Module:
-    """
-    Initialize transformations given the dataset name and configurations.
+    """Initialize transformations given the dataset name and configurations.
 
     Args:
         config_tr: A dictionary of transformation parameters.
@@ -145,8 +144,7 @@ def compose_from_config(config_tr: dict[str, Any]) -> torch.nn.Module:
 
 
 class MixUp(torch.nn.Module):
-    r"""
-    MixUp image transformation.
+    r"""MixUp image transformation.
 
     For an input x the output is :math:`\lambda x + (1-\lambda) x_p` , where :math:`x_p` is a random permutation of `x`
     along the batch dimension, and lam is a random number between 0 and 1. See https://arxiv.org/abs/1710.09412 for more
@@ -154,8 +152,7 @@ class MixUp(torch.nn.Module):
     """
 
     def __init__(self, alpha: float = 1.0, p: float = 1.0, div_by: float = 1.0, *args, **kwargs) -> None:
-        """
-        Initialize MixUp transformation.
+        """Initialize MixUp transformation.
 
         Args:
             alpha: A positive real number that determines the sampling
@@ -191,8 +188,7 @@ class MixUp(torch.nn.Module):
         y: Tensor | None = None,
         y2: Tensor | None = None,
     ) -> tuple[Tensor, Tensor]:
-        r"""
-        Apply pixel-space mixing to a batch of examples.
+        r"""Apply pixel-space mixing to a batch of examples.
 
         Args:
             x: A tensor with a batch of samples. Shape: [batch_size, ...].
@@ -227,15 +223,13 @@ class MixUp(torch.nn.Module):
 
 
 class CutMix(torch.nn.Module):
-    r"""
-    CutMix image transformation.
+    r"""CutMix image transformation.
 
     Please see the full paper for more details: https://arxiv.org/pdf/1905.04899.pdf
     """
 
     def __init__(self, alpha: float = 1.0, p: float = 1.0, *args, **kwargs) -> None:
-        """
-        Initialize CutMix transformation.
+        """Initialize CutMix transformation.
 
         Args:
             alpha: The alpha parameter to the Beta for producing a mixing lambda.
@@ -248,13 +242,12 @@ class CutMix(torch.nn.Module):
 
     @staticmethod
     def rand_bbox(size: torch.Size, lam: float) -> tuple[int, int, int, int]:
-        """
-        Return a random bbox coordinates.
+        """Return a random bbox coordinates.
 
         Args:
             size: model input tensor shape in this format: (...,H,W)
-            lam: lambda sampling parameter in CutMix method. See equation 1
-                in the original paper: https://arxiv.org/pdf/1905.04899.pdf
+            lam: lambda sampling parameter in CutMix method. See equation 1 in the original paper:
+                https://arxiv.org/pdf/1905.04899.pdf
 
         Returns:
             The output bbox format is a tuple: (x1, y1, x2, y2), where (x1,
@@ -297,8 +290,7 @@ class CutMix(torch.nn.Module):
         y: Tensor | None = None,
         y2: Tensor | None = None,
     ) -> tuple[Tensor, Tensor]:
-        """
-        Mix images by replacing random patches from one to the other.
+        """Mix images by replacing random patches from one to the other.
 
         Args:
             x: A tensor with a batch of samples. Shape: [batch_size, ...].
@@ -335,8 +327,7 @@ class CutMix(torch.nn.Module):
 
 
 class MixingTransforms:
-    """
-    Randomly apply only one of MixUp or CutMix.
+    """Randomly apply only one of MixUp or CutMix.
 
     Used for standard training.
     """

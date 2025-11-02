@@ -24,8 +24,7 @@ class ConvFFN(nn.Module):
         act_layer: nn.Module = nn.GELU,
         drop: float = 0.0,
     ) -> None:
-        """
-        Build convolutional FFN module.
+        """Build convolutional FFN module.
 
         Args:
             in_channels: Number of input channels.
@@ -74,8 +73,7 @@ class ConvFFN(nn.Module):
 
 
 class RepMixer(nn.Module):
-    """
-    Reparameterizable token mixer.
+    """Reparameterizable token mixer.
 
     For more details, please refer to our paper: `FastViT: A Fast Hybrid Vision Transformer using Structural
     Reparameterization <https://arxiv.org/pdf/2303.14189.pdf>`_
@@ -89,8 +87,7 @@ class RepMixer(nn.Module):
         layer_scale_init_value=1e-5,
         inference_mode: bool = False,
     ):
-        """
-        Build RepMixer Module.
+        """Build RepMixer Module.
 
         Args:
             dim: Input feature map dimension. :math:`C_{in}` from an expected input of size :math:`(B, C_{in}, H, W)`.
@@ -186,8 +183,7 @@ class RepMixer(nn.Module):
 
 
 class RepMixerBlock(nn.Module):
-    """
-    Implementation of Metaformer block with RepMixer as token mixer.
+    """Implementation of Metaformer block with RepMixer as token mixer.
 
     For more details on Metaformer structure, please refer to: `MetaFormer Is Actually What You Need for Vision
     <https://arxiv.org/pdf/2111.11418.pdf>`_
@@ -207,8 +203,7 @@ class RepMixerBlock(nn.Module):
         *args,
         **kwargs,
     ):
-        """
-        Build RepMixer Block.
+        """Build RepMixer Block.
 
         Args:
             dim: Number of embedding dimensions.

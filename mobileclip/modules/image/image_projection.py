@@ -13,8 +13,7 @@ from mobileclip import logger
 
 
 class GlobalPool(nn.Module):
-    """
-    This layers applies global pooling over a 4D or 5D input tensor.
+    """This layers applies global pooling over a 4D or 5D input tensor.
 
     Args:
         pool_type (Optional[str]): Pooling type. It can be mean, rms, or abs. Default: `mean`
