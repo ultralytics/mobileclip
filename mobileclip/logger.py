@@ -75,8 +75,8 @@ def ignore_exception_with_warning(message: str) -> None:
     from uncaught exception E2.
 
     Args:
-        message: Extra explanation and context for debugging. (Note: the exception obj
-            will be automatically fetched from python. No need to pass it as an argument or as message)
+        message: Extra explanation and context for debugging. (Note: the exception obj will be automatically fetched
+            from python. No need to pass it as an argument or as message)
     """
     warning(f"{message}:\n{traceback.format_exc()}".replace("\n", "\n(WARNING)"))
 

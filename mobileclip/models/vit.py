@@ -33,10 +33,8 @@ class ConvNormAct(nn.Module):
 
     Args:
         cfg: Model configuration.
-        in_channels: :math:`C_{out}` from an expected output of size
-            :math:`(bs, C_{in}, X_{1}, ..., X_{N})`.
-        out_channels: :math:`C_{out}` from an expected output of size
-            :math:`(bs, C_{out}, Y_{1}, ..., Y_{N})`.
+        in_channels: :math:`C_{out}` from an expected output of size :math:`(bs, C_{in}, X_{1}, ..., X_{N})`.
+        out_channels: :math:`C_{out}` from an expected output of size :math:`(bs, C_{out}, Y_{1}, ..., Y_{N})`.
         kernel_size: Kernel size for convolution. An integer, or tuple of length ``N``.
         stride: Stride for convolution. An integer, or tuple of length ``N``. Default: 1.
         dilation: Dilation rate for convolution. An integer, or tuple of length ``N``. Default: ``1``.
@@ -49,12 +47,10 @@ class ConvNormAct(nn.Module):
         padding_mode: Padding mode ('zeros', 'reflect', 'replicate' or 'circular'). Default: ``zeros``.
         use_norm: Use normalization layer after convolution. Default: ``True``.
         use_act: Use activation layer after convolution (or convolution and normalization). Default: ``True``.
-        norm_layer: If not None, the provided normalization layer object will be used.
-            Otherwise, a normalization object will be created based on config
-            ``model.normalization.*`` opts.
-        act_layer: If not None, the provided activation function will be used.
-            Otherwise, an activation function will be created based on config
-            ``model.activation.*`` opts.
+        norm_layer: If not None, the provided normalization layer object will be used. Otherwise, a normalization object
+            will be created based on config ``model.normalization.*`` opts.
+        act_layer: If not None, the provided activation function will be used. Otherwise, an activation function will be
+            created based on config ``model.activation.*`` opts.
 
     Notes:
         - Input: :math:`(bs, C_{in}, X_{1}, ..., X_{N})`.

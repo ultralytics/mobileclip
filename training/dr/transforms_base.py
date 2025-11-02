@@ -164,8 +164,8 @@ class MixUp(torch.nn.Module):
                 lambda is sampled from a symmetric Beta distribution with
                 parameter alpha. When alpha=0 no mixing happens. Defaults to 1.0.
             p: Mixing is applied with probability `p`. Defaults to 1.0.
-            div_by: Divide the lambda by a constant. Set to 2.0 to make sure mixing is
-                biased towards the first input. Defaults to 1.0.
+            div_by: Divide the lambda by a constant. Set to 2.0 to make sure mixing is biased towards the first input.
+                Defaults to 1.0.
         """
         super().__init__(*args, **kwargs)
         assert alpha >= 0
@@ -196,8 +196,7 @@ class MixUp(torch.nn.Module):
 
         Args:
             x: A tensor with a batch of samples. Shape: [batch_size, ...].
-            x2: A tensor with exactly one matching sample for any input in `x`. Shape:
-                [batch_size, ...].
+            x2: A tensor with exactly one matching sample for any input in `x`. Shape: [batch_size, ...].
             y: A tensor of target labels. Shape: [batch_size, ...].
             y2: A tensor of target labels for paired samples. Shape: [batch_size, ...].
 
@@ -303,8 +302,7 @@ class CutMix(torch.nn.Module):
 
         Args:
             x: A tensor with a batch of samples. Shape: [batch_size, ...].
-            x2: A tensor with exactly one matching sample for any input in `x`. Shape:
-                [batch_size, ...].
+            x2: A tensor with exactly one matching sample for any input in `x`. Shape: [batch_size, ...].
             y: A tensor of target labels. Shape: [batch_size, ...].
             y2: A tensor of target labels for paired samples. Shape: [batch_size, ...].
             params: Dictionary of {'lam': lam_val} to reproduce a mixing.
