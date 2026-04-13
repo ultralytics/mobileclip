@@ -37,7 +37,7 @@ classifiers = [
 
 # Core package dependencies
 dependencies = [
-    "open-clip-torch>=2.20.0", # Open-source implementation of CLIP
+    "open-clip-torch>=3.3.0", # Open-source implementation of CLIP
     "timm>=0.9.5",            # PyTorch Image Models
 ]
 
