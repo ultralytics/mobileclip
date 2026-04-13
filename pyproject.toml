@@ -43,7 +43,7 @@ dependencies = [
 
 [project.optional-dependencies]
 full = [
-    "clip-benchmark>=1.4.0",  # Benchmarking tools for CLIP models
+    "clip-benchmark>=1.6.2",  # Benchmarking tools for CLIP models
     "datasets",               # Hugging Face datasets library
     "torch>=2.1.0",           # PyTorch deep learning framework
     "torchvision>=0.16.0"     # Computer vision library for PyTorch
