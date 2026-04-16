@@ -2,7 +2,7 @@
 
 # MobileCLIP: Fast Image-Text Models Through Multi-Modal Reinforced Training
 
-This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training](https://arxiv.org/pdf/2311.17049.pdf) (CVPR 2024) by Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, and Oncel Tuzel. It provides code for inference, training, and evaluation of MobileCLIP models trained on DataCompDR datasets.
+This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training](https://arxiv.org/abs/2311.17049) (CVPR 2024) by Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, and Oncel Tuzel. It provides code for inference, training, and evaluation of MobileCLIP models trained on DataCompDR datasets.
 
 [![Ultralytics Actions](https://github.com/ultralytics/mobileclip/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/mobileclip/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
@@ -17,7 +17,7 @@ This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Ima
 
 - **2024/11/22:** iOS app released for real-time zero-shot image classification with MobileCLIP. Explore the [iOS app](./ios_app/).
 - **2024/06/13:** Training scripts for [OpenCLIP](https://github.com/mlfoundations/open_clip/tree/main/src/open_clip) on DataCompDR datasets are now available. See [training/](./training/).
-- **2024/06/13:** MobileCLIP models and DataCompDR datasets are hosted on Hugging Face in the [MobileCLIP/DataCompDR Collection](https://huggingface.co/collections/apple/mobileclip-models-datacompdr-data-665789776e1aa2b59f35f7c8).
+- **2024/06/13:** MobileCLIP models and DataCompDR datasets are hosted on Hugging Face in the [MobileCLIP/DataCompDR Collection](https://huggingface.co/collections/apple/mobileclip-models-datacompdr-data).
 
 ## 🚀 Highlights
 
@@ -160,7 +160,7 @@ Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributi
 
 Ultralytics provides two licensing options to accommodate different use cases:
 
-- **AGPL-3.0 License**: Ideal for students and enthusiasts, this [OSI-approved](https://opensource.org/license/agpl-v3) open-source license promotes collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/mobileclip/blob/main/LICENSE) file for details.
+- **AGPL-3.0 License**: Ideal for students and enthusiasts, this [OSI-approved](https://opensource.org/license/agpl-3.0) open-source license promotes collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/mobileclip/blob/main/LICENSE) file for details.
 - **Enterprise License**: Designed for commercial applications, this license allows for the integration of Ultralytics software and AI models into commercial products and services. For more information, visit [Ultralytics Licensing](https://www.ultralytics.com/license).
 
 ## 📬 Contact Us
@@ -175,7 +175,7 @@ If you encounter bugs, have feature requests, or wish to contribute, please visi
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
   <a href="https://twitter.com/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png" width="3%" alt="Ultralytics Twitter"></a>
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
-  <a href="https://youtube.com/ultralytics?sub_confirmation=1"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="Ultralytics YouTube"></a>
+  <a href="https://www.youtube.com/ultralytics?sub_confirmation=1"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="Ultralytics YouTube"></a>
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
   <a href="https://www.tiktok.com/@ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png" width="3%" alt="Ultralytics TikTok"></a>
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
