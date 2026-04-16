@@ -2,7 +2,7 @@
 
 # MobileCLIP: Fast Image-Text Models Through Multi-Modal Reinforced Training
 
-This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training](https://arxiv.org/pdf/2311.17049) (CVPR 2024) by Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, and Oncel Tuzel. It provides code for inference, training, and evaluation of MobileCLIP models trained on DataCompDR datasets.
+This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training](https://arxiv.org/abs/2311.17049) (CVPR 2024) by Pavan Kumar Anasosalu Vasu, Hadi Pouransari, Fartash Faghri, Raviteja Vemulapalli, and Oncel Tuzel. It provides code for inference, training, and evaluation of MobileCLIP models trained on DataCompDR datasets.
 
 [![Ultralytics Actions](https://github.com/ultralytics/mobileclip/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/mobileclip/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
