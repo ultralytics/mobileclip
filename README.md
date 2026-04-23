@@ -15,6 +15,7 @@ This repository is an Ultralytics fork of Apple's official [MobileCLIP: Fast Ima
 
 ## 📰 What's New
 
+- **2026/04/15:** Apple's upstream repository added MobileCLIP-S3/S4 resources and previously released MobileCLIP2. This fork intentionally keeps the local Python package focused on the MobileCLIP API used by Ultralytics; see the [Apple ML-MobileCLIP repository](https://github.com/apple/ml-mobileclip) for upstream-only MobileCLIP2 assets, training updates, and result artifacts.
 - **2024/11/22:** iOS app released for real-time zero-shot image classification with MobileCLIP. Explore the [iOS app](./ios_app/).
 - **2024/06/13:** Training scripts for [OpenCLIP](https://github.com/mlfoundations/open_clip/tree/main/src/open_clip) on DataCompDR datasets are now available. See [training/](./training/).
 - **2024/06/13:** MobileCLIP models and DataCompDR datasets are hosted on Hugging Face in the [MobileCLIP/DataCompDR Collection](https://huggingface.co/collections/apple/mobileclip-models-datacompdr-data).
@@ -108,6 +109,8 @@ Available variants on OpenCLIP:
 - MobileCLIP-S2 (`datacompdr`)
 - MobileCLIP-B (`datacompdr`)
 - MobileCLIP-B (`datacompdr_lt`)
+
+For MobileCLIP2 and MobileCLIP-S3/S4 OpenCLIP resources, use the upstream [Apple ML-MobileCLIP](https://github.com/apple/ml-mobileclip) release directly. Those files are not vendored here so this fork remains a small, `pyproject.toml`-based package compatible with Ultralytics installs.
 
 ## 📊 Evaluation
 
