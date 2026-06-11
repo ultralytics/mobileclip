@@ -52,9 +52,9 @@ cd ml-mobileclip/
 git clone https://github.com/mlfoundations/open_clip.git
 cd open_clip
 git checkout cf86ee7ec4658845f640858ecd34d0f15588271a
-git apply ../open_clip.patch # Support for sampling without replacement
-cp ../configs/ ./ -r
-cp ../dr/ ./src/training/ -r
+git apply ../training/open_clip.patch # Support for sampling without replacement
+cp ../training/configs/ ./ -r
+cp ../training/dr/ ./src/training/ -r
 ```
 
 ## Training
@@ -65,5 +65,5 @@ We provide scripts for training on DataCompDR-12M and DataCompDR-1B.
 cd open_clip/
 bash configs/run_datacomp12m.sh   # Train a ViT-B/16 on DataComp-12M without DR
 bash configs/run_datacompdr12m.sh # Train a ViT-B/16 on DataComp-12M with DR
-bash configs/run_datacompdr1B.sh  # Train a ViT-B/16 on DataComp-1B with DR
+bash configs/run_datacompdr1b.sh  # Train a ViT-B/16 on DataComp-1B with DR
 ```
