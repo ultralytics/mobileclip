@@ -6,7 +6,7 @@ Demonstrates the use of **MobileCLIP** models for performing real-time zero-shot
 
 ## Background
 
-MobileCLIP is a new family of efficient image-text models optimized for runtime performance, trained with a novel and efficient training approach, namely multi-model reinforced training.
+MobileCLIP is a new family of efficient image-text models optimized for runtime performance, trained with a novel and efficient training approach, namely multi-modal reinforced training.
 
 ## Dependencies
 
