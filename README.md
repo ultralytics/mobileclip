@@ -61,7 +61,7 @@ tokenizer = mobileclip.get_tokenizer("mobileclip_s0")
 image = preprocess(Image.open("docs/fig_accuracy_latency.png").convert("RGB")).unsqueeze(0)
 text = tokenizer(["a diagram", "a dog", "a cat"])
 
-with torch.no_grad(), torch.cuda.amp.autocast():
+with torch.no_grad(), torch.amp.autocast("cuda"):
     image_features = model.encode_image(image)
     text_features = model.encode_text(text)
     image_features /= image_features.norm(dim=-1, keepdim=True)
