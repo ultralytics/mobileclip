@@ -61,7 +61,7 @@ Ultralytics fork of Apple's [ml-mobileclip](https://github.com/apple/ml-mobilecl
 
 ## Conventions
 
-- Code files (Python, shell, Swift, YAML, `pyproject.toml` — not Markdown or JSON) carry an `Ultralytics 🚀 AGPL-3.0 License` first-line header — Ultralytics Actions adds them automatically; don't add or revert them manually. Preserve the original Apple copyright notices that follow in files that have them.
+- Code files (Python, shell, Swift, YAML, `pyproject.toml` — not Markdown or JSON) carry an `Ultralytics 🚀 AGPL-3.0 License` header comment at the top, after any shebang — Ultralytics Actions adds them automatically; don't add or revert them manually. Preserve the original Apple copyright notices that follow in files that have them.
 - Google-style docstrings (Args/Returns sections); Ruff/docformatter/Prettier formatting is enforced by the `format.yml` auto-commit, so don't hand-fight its output.
 - There are no tests to run; `hf_dataset_example.py` streams data from Hugging Face over the live network, and `training/` run scripts expect local DataCompDR shards plus multi-node `torchrun`, so don't invoke either for validation.
 - No version-bump or release process: `version = "0.1.0"` in `pyproject.toml` is static and PRs don't change it. Dependabot updates pip and GitHub Actions dependencies weekly under the `dependencies` label.
