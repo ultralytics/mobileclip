@@ -44,7 +44,7 @@ uv pip install --system -e . torch torchvision --extra-index-url https://downloa
 # is the source of truth: Ruff + docformatter for Python, Prettier for YAML/JSON/Markdown,
 # codespell for spelling). Approximate locally with:
 uvx ruff format . && uvx ruff check --fix .
-uvx codespell  # reads [tool.codespell] in pyproject.toml
+uvx codespell # reads [tool.codespell] in pyproject.toml
 ```
 
 CI (`ci.yml`) runs on push and PRs to `main` with a matrix of Python {3.11, 3.13} × torch {2.5.0, 2.8.0}; the package itself declares `requires-python >=3.8` in `pyproject.toml`.
