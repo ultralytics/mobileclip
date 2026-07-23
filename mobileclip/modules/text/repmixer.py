@@ -6,8 +6,8 @@
 from __future__ import annotations
 
 import torch
-import torch.nn as nn
 from timm.models.layers import DropPath, trunc_normal_
+from torch import nn
 
 from mobileclip.modules.common.mobileone import MobileOneBlock
 
@@ -63,6 +63,7 @@ class ConvFFN(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply the convolutional feed-forward network."""
         x = self.conv(x)
         x = self.fc1(x)
         x = self.act(x)
@@ -135,6 +136,7 @@ class RepMixer(nn.Module):
                 self.layer_scale = nn.Parameter(layer_scale_init_value * torch.ones((dim, 1, 1)), requires_grad=True)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Mix tokens using the training or reparameterized path."""
         if hasattr(self, "reparam_conv"):
             x = self.reparam_conv(x)
             return x
@@ -215,6 +217,8 @@ class RepMixerBlock(nn.Module):
             use_layer_scale: Flag to turn on layer scale. Default: ``True``
             layer_scale_init_value: Layer scale value at initialization. Default: 1e-5
             inference_mode: Flag to instantiate block in inference mode. Default: ``False``
+            *args: Additional positional module arguments.
+            **kwargs: Additional keyword module arguments.
         """
         super().__init__()
 
@@ -245,6 +249,7 @@ class RepMixerBlock(nn.Module):
             self.layer_scale = nn.Parameter(layer_scale_init_value * torch.ones((dim, 1, 1)), requires_grad=True)
 
     def forward(self, x, *args, **kwargs):
+        """Apply RepMixer and feed-forward residuals to text tokens."""
         if x.dim() == 3:
             # B, C, D --- where C is the context length
             # Convert to B, D, C --- to match RepMixer impl.

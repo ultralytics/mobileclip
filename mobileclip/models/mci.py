@@ -9,10 +9,10 @@ import copy
 from functools import partial
 
 import torch
-import torch.nn as nn
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.models import register_model
 from timm.models.layers import DropPath, trunc_normal_
+from torch import nn
 
 from mobileclip.modules.common.mobileone import MobileOneBlock
 from mobileclip.modules.image.replknet import ReparamLargeKernelConv
@@ -124,6 +124,7 @@ class MHSA(nn.Module):
         self.proj_drop = nn.Dropout(proj_drop)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply multi-head self-attention to an input tensor."""
         shape = x.shape
         B, C, H, W = shape
         N = H * W
@@ -169,7 +170,7 @@ class PatchEmbed(nn.Module):
             use_se: If ``True`` SE block will be used.
         """
         super().__init__()
-        block = list()
+        block = []
         block.append(
             ReparamLargeKernelConv(
                 in_channels=in_channels,
@@ -198,6 +199,7 @@ class PatchEmbed(nn.Module):
         self.proj = nn.Sequential(*block)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Project an image into patch embeddings."""
         x = self.proj(x)
         return x
 
@@ -265,6 +267,7 @@ class RepMixer(nn.Module):
                 self.layer_scale = nn.Parameter(layer_scale_init_value * torch.ones((dim, 1, 1)), requires_grad=True)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Mix spatial tokens using the training or reparameterized path."""
         if hasattr(self, "reparam_conv"):
             x = self.reparam_conv(x)
             return x
@@ -361,6 +364,7 @@ class ConvFFN(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply the convolutional feed-forward network."""
         x = self.conv(x)
         x = self.fc1(x)
         x = self.act(x)
@@ -429,6 +433,7 @@ class RepCPE(nn.Module):
             )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply conditional positional encoding."""
         if hasattr(self, "reparam_conv"):
             x = self.reparam_conv(x)
             return x
@@ -437,6 +442,7 @@ class RepCPE(nn.Module):
             return x
 
     def reparameterize(self) -> None:
+        """Fold positional encoding into a single convolution."""
         # Build equivalent Id tensor
         input_dim = self.in_channels // self.groups
         kernel_value = torch.zeros(
@@ -540,6 +546,7 @@ class RepMixerBlock(nn.Module):
             self.layer_scale = nn.Parameter(layer_scale_init_value * torch.ones((dim, 1, 1)), requires_grad=True)
 
     def forward(self, x):
+        """Apply token mixing and the convolutional feed-forward network."""
         if self.use_layer_scale:
             x = self.token_mixer(x)
             x = x + self.drop_path(self.layer_scale * self.convffn(x))
@@ -603,6 +610,7 @@ class AttentionBlock(nn.Module):
             self.layer_scale_2 = nn.Parameter(layer_scale_init_value * torch.ones((dim, 1, 1)), requires_grad=True)
 
     def forward(self, x):
+        """Apply attention and convolutional feed-forward residuals."""
         if self.use_layer_scale:
             x = x + self.drop_path(self.layer_scale_1 * self.token_mixer(self.norm(x)))
             x = x + self.drop_path(self.layer_scale_2 * self.convffn(x))
@@ -685,7 +693,7 @@ def basic_blocks(
 
 
 class FastViT(nn.Module):
-    """This class implements `FastViT architecture <https://arxiv.org/pdf/2303.14189.pdf>`_."""
+    """Implement `FastViT architecture <https://arxiv.org/pdf/2303.14189.pdf>`_."""
 
     def __init__(
         self,
@@ -712,6 +720,7 @@ class FastViT(nn.Module):
         inference_mode=False,
         **kwargs,
     ) -> None:
+        """Initialize the FastViT stages and classification head."""
         super().__init__()
 
         self.num_classes = num_classes
@@ -790,16 +799,19 @@ class FastViT(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
     def forward_embeddings(self, x: torch.Tensor) -> torch.Tensor:
+        """Create patch embeddings from an image tensor."""
         x = self.patch_embed(x)
         return x
 
     def forward_tokens(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply every FastViT network stage."""
         for idx, block in enumerate(self.network):
             x = block(x)
         # output only the features of last layer for image classification
         return x
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Run image classification."""
         # input embedding
         x = self.forward_embeddings(x)
         # through backbone

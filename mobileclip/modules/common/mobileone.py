@@ -8,8 +8,8 @@ from __future__ import annotations
 import copy
 
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
+from torch import nn
 
 __all__ = ["MobileOneBlock", "reparameterize_model"]
 
@@ -77,7 +77,7 @@ class MobileOneBlock(nn.Module):
         use_act: bool = True,
         use_scale_branch: bool = True,
         num_conv_branches: int = 1,
-        activation: nn.Module = nn.GELU(),
+        activation: nn.Module | None = None,
     ) -> None:
         """Construct a MobileOneBlock module.
 
@@ -94,6 +94,7 @@ class MobileOneBlock(nn.Module):
             use_act: Whether to use activation. Default: ``True``
             use_scale_branch: Whether to use scale branch. Default: ``True``
             num_conv_branches: Number of linear conv branches.
+            activation: Activation module. Defaults to ``nn.GELU``.
         """
         super().__init__()
         self.inference_mode = inference_mode
@@ -113,7 +114,7 @@ class MobileOneBlock(nn.Module):
             self.se = nn.Identity()
 
         if use_act:
-            self.activation = activation
+            self.activation = nn.GELU() if activation is None else activation
         else:
             self.activation = nn.Identity()
 
@@ -136,7 +137,7 @@ class MobileOneBlock(nn.Module):
 
             # Re-parameterizable conv branches
             if num_conv_branches > 0:
-                rbr_conv = list()
+                rbr_conv = []
                 for _ in range(self.num_conv_branches):
                     rbr_conv.append(self._conv_bn(kernel_size=kernel_size, padding=padding))
                 self.rbr_conv = nn.ModuleList(rbr_conv)

@@ -26,6 +26,7 @@ class CLIP(nn.Module):
     """Base class for multi-modal image-text data."""
 
     def __init__(self, cfg: dict, output_dict: bool = False, *args, **kwargs) -> None:
+        """Initialize the image and text encoders from a model configuration."""
         super().__init__()
         self.output_dict = output_dict
         self.projection_dim = cfg["embed_dim"]
@@ -45,6 +46,7 @@ class CLIP(nn.Module):
         return scale
 
     def encode_image(self, image: torch.Tensor, normalize: bool = False):
+        """Encode an image tensor, optionally normalizing its features."""
         image_encoder_out = self.image_encoder(image)
         if isinstance(image_encoder_out, dict):
             features = image_encoder_out["logits"]
@@ -53,10 +55,12 @@ class CLIP(nn.Module):
         return F.normalize(features, dim=-1) if normalize else features
 
     def encode_text(self, text: torch.Tensor, normalize: bool = False):
+        """Encode text tokens, optionally normalizing their features."""
         text_features = self.text_encoder(text_tokens=text, key_padding_mask=None)
         return F.normalize(text_features, dim=-1) if normalize else text_features
 
     def forward(self, image: torch.Tensor | None = None, text: torch.Tensor | None = None, *args, **kwargs) -> Any:
+        """Encode available image and text inputs."""
         image_embeddings = self.encode_image(image, normalize=True) if image is not None else None
         text_embeddings = self.encode_text(text, normalize=True) if text is not None else None
 

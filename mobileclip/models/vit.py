@@ -75,6 +75,7 @@ class ConvNormAct(nn.Module):
         *args,
         **kwargs,
     ) -> None:
+        """Initialize a configurable 2D convolution block."""
         super().__init__()
         self.ndim = 2
 
@@ -155,11 +156,12 @@ class ConvNormAct(nn.Module):
         self.dilation = dilation
 
     def forward(self, x: Tensor) -> Tensor:
+        """Apply the convolution block."""
         return self.block(x)
 
 
 class VisionTransformer(nn.Module):
-    """This class defines the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model
+    """Define the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model
     implementation is inspired from `Early Convolutions Help Transformers See
     Better <https://arxiv.org/abs/2106.14881>`_.
 
@@ -172,6 +174,7 @@ class VisionTransformer(nn.Module):
     """
 
     def __init__(self, cfg, *args, **kwargs) -> None:
+        """Initialize the patch embedding, transformer, and classifier."""
         super().__init__()
         image_channels = 3
         num_classes = cfg.get("n_classes", 1000)
@@ -275,6 +278,7 @@ class VisionTransformer(nn.Module):
         self.emb_dropout = nn.Dropout(p=pos_emb_drop_p)
 
     def extract_patch_embeddings(self, x: Tensor) -> tuple[Tensor, tuple[int, int]]:
+        """Create patch embeddings and return their spatial dimensions."""
         # input is of shape [Batch, in_channels, height, width]. in_channels is mostly 3 (for RGB images)
         batch_size = x.shape[0]
 
@@ -320,6 +324,7 @@ class VisionTransformer(nn.Module):
         return x, (n_h, n_w)
 
     def extract_features(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, Tensor | None]:
+        """Extract classification and optional spatial image features."""
         # The extract_features function for ViT returns two outputs: (1) embedding corresponding to CLS token
         # and (2) image embeddings of the shape [B, C, h//o, w//o], where the value of o is typically 16.
         return_image_embeddings = kwargs.get("return_image_embeddings", False)
@@ -353,16 +358,18 @@ class VisionTransformer(nn.Module):
             return cls_embedding, None
 
     def forward_classifier(self, x: Tensor, *args, **kwargs) -> tuple[Tensor, Tensor]:
+        """Apply the classifier to extracted image features."""
         cls_embedding, image_embedding = self.extract_features(x, *args, **kwargs)
         # classify based on CLS token
         cls_embedding = self.classifier(cls_embedding)
         return cls_embedding, image_embedding
 
     def forward(self, x: Tensor, *args, **kwargs) -> Tensor | dict[str, Tensor]:
+        """Return logits and optionally spatial image embeddings."""
         # In ViT model, we can return either classifier embeddings (logits) or image embeddings or both.
         # To return the image embeddings, we need to set keyword argument (return_image_embeddings) as True.
         if kwargs.get("return_image_embeddings", False):
-            out_dict = dict()
+            out_dict = {}
             prediction, image_embedding = self.forward_classifier(x, *args, **kwargs)
             out_dict.update({"logits": prediction})
             if image_embedding is not None:
@@ -375,6 +382,7 @@ class VisionTransformer(nn.Module):
 
 @register_model
 def vit_b16(pretrained=False, **kwargs):
+    """Create the ViT-B/16 image encoder."""
     # Vision transformer config
     cfg = {
         "norm_layer": "layer_norm_fp32",

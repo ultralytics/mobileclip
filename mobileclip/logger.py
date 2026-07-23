@@ -23,10 +23,12 @@ text_colors = {
 
 
 def get_curr_time_stamp() -> str:
+    """Return the current local timestamp for log messages."""
     return time.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def error(message: str) -> None:
+    """Print the current exception and exit with an error message."""
     time_stamp = get_curr_time_stamp()
     error_str = text_colors["error"] + text_colors["bold"] + "ERROR  " + text_colors["end_color"]
 
@@ -46,16 +48,19 @@ def error(message: str) -> None:
 
 
 def color_text(in_text: str) -> str:
+    """Wrap text in the configured highlight color."""
     return text_colors["light_red"] + in_text + text_colors["end_color"]
 
 
 def log(message: str, end="\n") -> None:
+    """Print a general log message."""
     time_stamp = get_curr_time_stamp()
     log_str = text_colors["logs"] + text_colors["bold"] + "LOGS   " + text_colors["end_color"]
     print(f"{time_stamp} - {log_str} - {message}", end=end)
 
 
 def warning(message: str | Warning) -> None:
+    """Print a warning message."""
     if isinstance(message, Warning):
         message = f"{type(message).__name__}({','.join(map(repr, message.args))}"
 
@@ -81,6 +86,7 @@ def ignore_exception_with_warning(message: str) -> None:
 
 
 def info(message: str, print_line: bool | None = False) -> None:
+    """Print an informational message."""
     time_stamp = get_curr_time_stamp()
     info_str = text_colors["info"] + text_colors["bold"] + "INFO   " + text_colors["end_color"]
     print(f"{time_stamp} - {info_str} - {message}")
@@ -89,32 +95,39 @@ def info(message: str, print_line: bool | None = False) -> None:
 
 
 def debug(message: str) -> None:
+    """Print a debug message."""
     time_stamp = get_curr_time_stamp()
     log_str = text_colors["debug"] + text_colors["bold"] + "DEBUG   " + text_colors["end_color"]
     print(f"{time_stamp} - {log_str} - {message}")
 
 
 def double_dash_line(dashes: int | None = 75) -> None:
+    """Print a double-line separator."""
     print(text_colors["error"] + "=" * dashes + text_colors["end_color"])
 
 
 def singe_dash_line(dashes: int | None = 67) -> None:
+    """Print a single-line separator."""
     print("-" * dashes)
 
 
 def print_header(header: str) -> None:
+    """Print a major section header."""
     double_dash_line()
     print(text_colors["info"] + text_colors["bold"] + "=" * 50 + str(header) + text_colors["end_color"])
     double_dash_line()
 
 
 def print_header_minor(header: str) -> None:
+    """Print a minor section header."""
     print(text_colors["warning"] + text_colors["bold"] + "=" * 25 + str(header) + text_colors["end_color"])
 
 
 def disable_printing():
-    sys.stdout = open(os.devnull, "w")
+    """Redirect standard output to the null device."""
+    sys.stdout = open(os.devnull, "w")  # noqa: SIM115 - kept open until enable_printing restores stdout
 
 
 def enable_printing():
+    """Restore standard output."""
     sys.stdout = sys.__stdout__
