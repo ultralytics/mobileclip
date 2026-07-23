@@ -6,14 +6,13 @@
 from __future__ import annotations
 
 import torch
-import torch.nn as nn
-from torch import Tensor
+from torch import Tensor, nn
 
 from mobileclip import logger
 
 
 class GlobalPool(nn.Module):
-    """This layers applies global pooling over a 4D or 5D input tensor.
+    """Apply global pooling over a 4D or 5D input tensor.
 
     Args:
         pool_type (Optional[str]): Pooling type. It can be mean, rms, or abs. Default: `mean`
@@ -27,6 +26,7 @@ class GlobalPool(nn.Module):
     pool_types = ["mean", "rms", "abs"]
 
     def __init__(self, pool_type: str | None = "mean", keep_dim: bool | None = False, *args, **kwargs) -> None:
+        """Initialize the pooling type and dimension behavior."""
         super().__init__()
         if pool_type not in self.pool_types:
             logger.error(f"Supported pool types are: {self.pool_types}. Got {pool_type}")
@@ -47,6 +47,7 @@ class GlobalPool(nn.Module):
         return x
 
     def forward(self, x: Tensor) -> Tensor:
+        """Pool a 4D or 5D tensor."""
         if x.dim() == 4:
             dims = [-2, -1]
         elif x.dim() == 5:
@@ -57,9 +58,10 @@ class GlobalPool(nn.Module):
 
 
 class GlobalPool2D(nn.Module):
-    """This class implements global pooling with linear projection."""
+    """Implement global pooling with linear projection."""
 
     def __init__(self, in_dim: int, out_dim: int, *args, **kwargs) -> None:
+        """Initialize the pooling layer and projection matrix."""
         super().__init__()
         scale = in_dim**-0.5
         self.pool = GlobalPool(pool_type="mean", keep_dim=False)
@@ -68,6 +70,7 @@ class GlobalPool2D(nn.Module):
         self.out_dim = out_dim
 
     def forward(self, x: Tensor, *args, **kwargs) -> Tensor:
+        """Pool and project a 4D image feature tensor."""
         # x is of shape [batch, in_dim]
         assert x.dim() == 4, f"Input should be 4-dimensional (Batch x in_dim x in_height x in_width). Got: {x.shape}"
 
@@ -79,9 +82,10 @@ class GlobalPool2D(nn.Module):
 
 
 class SimpleImageProjectionHead(nn.Module):
-    """This class implements linear projection head."""
+    """Implement a linear projection head."""
 
     def __init__(self, in_dim: int, out_dim: int) -> None:
+        """Initialize the projection matrix."""
         super().__init__()
         scale = in_dim**-0.5
         self.proj = nn.Parameter(scale * torch.randn(size=(in_dim, out_dim)))
@@ -89,6 +93,7 @@ class SimpleImageProjectionHead(nn.Module):
         self.out_dim = out_dim
 
     def forward(self, x: Tensor, *args, **kwargs) -> Tensor:
+        """Project a 2D feature tensor."""
         # x is of shape [batch, in_dim]
         assert x.dim() == 2, f"Input should be 2-dimensional (Batch x in_dim). Got: {x.shape}"
 

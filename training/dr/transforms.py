@@ -136,6 +136,7 @@ class RandomHorizontalFlip(T.RandomHorizontalFlip, Compressible):
 
         Args:
             img (PIL Image or Tensor): Image to be flipped.
+            params: Optional flip decision to reapply.
 
         Returns:
             PIL Image or Tensor: Randomly flipped image.
@@ -173,6 +174,8 @@ class RandAugment(T.RandAugment, Compressible):
 
         Args:
             p: The probability of applying transformation. A float in [0, 1.0].
+            *args: Additional positional RandAugment arguments.
+            **kwargs: Additional keyword RandAugment arguments.
         """
         super().__init__(*args, **kwargs)
         self.p = p
@@ -184,6 +187,8 @@ class RandAugment(T.RandAugment, Compressible):
 
         Args:
             img (PIL Image or Tensor): Image to be transformed.
+            params: Optional augmentation operations to reapply.
+            **kwargs: Additional transformation arguments.
 
         Returns:
             PIL Image or Tensor: Transformed image.
@@ -247,6 +252,8 @@ class RandomErasing(T.RandomErasing, Compressible):
 
         Args:
             img (Tensor): Tensor image to be erased.
+            params: Optional erase region to reapply.
+            **kwargs: Additional transformation arguments.
 
         Returns:
             img (Tensor): Erased Tensor image.
@@ -414,7 +421,7 @@ class Compose:
 
     def has_random_resized_crop(self) -> bool:
         """Return True if RandomResizedCrop is one of the transformations."""
-        return any([t.__class__ == RandomResizedCrop for _, t in self.transforms])
+        return any(t.__class__ == RandomResizedCrop for _, t in self.transforms)
 
     def __call__(
         self,
@@ -429,6 +436,8 @@ class Compose:
             img: A tensor to be transformed.
             params: Transformation parameters to be reapplied.
             img2: Second tensor to be used for mixing transformations.
+            after_collate: Whether the transform runs after collation.
+            size: Optional variable input size.
 
         Returns:
             A Tuple of a transformed image and a dictionary with transformation
@@ -441,7 +450,7 @@ class Compose:
             generation time,
             3) `params=()`: Transformation has no random parameters.
         """
-        params = dict()
+        params = {}
         for t_name, t in self.transforms:
             if after_collate and (t_name in BEFORE_COLLATE_TRANSFORMS and t_name != "uint8" and t_name != "to_tensor"):
                 # Skip transformations applied in data loader
@@ -476,6 +485,7 @@ class Compose:
             img: A tensor to be transformed.
             params: Transformation parameters to be reapplied.
             img2: Second tensor to be used for mixing transformations.
+            size: Optional variable input size.
 
         Returns:
             A Tuple of a transformed image and a dictionary with transformation
@@ -625,6 +635,6 @@ def before_collate_apply(sample: Tensor, transform: Compose, num_samples: int) -
             params_all[k].append(v)
 
     sample_all = torch.stack(sample_all, axis=0)
-    for k in params_all.keys():
+    for k in params_all:
         params_all[k] = torch.tensor(params_all[k])
     return sample_all, params_all

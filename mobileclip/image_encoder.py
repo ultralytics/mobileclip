@@ -6,17 +6,18 @@
 #
 from typing import Any
 
-import torch.nn as nn
 from timm.models import create_model
+from torch import nn
 
 from mobileclip import models  # noqa added to register models
 from mobileclip.modules.image.image_projection import GlobalPool2D
 
 
 class MCi(nn.Module):
-    """This class implements `MCi Models <https://arxiv.org/pdf/2311.17049.pdf>`_."""
+    """Implement `MCi Models <https://arxiv.org/pdf/2311.17049.pdf>`_."""
 
     def __init__(self, model_name: str, *args, **kwargs) -> None:
+        """Initialize an MCi model and optional projection head."""
         super().__init__()
         self.projection_dim = None
         if "projection_dim" in kwargs:
@@ -26,11 +27,10 @@ class MCi(nn.Module):
         self.model = create_model(model_name, projection_dim=self.projection_dim)
 
         # Build out projection head.
-        if self.projection_dim is not None:
-            if hasattr(self.model, "head"):
-                self.model.head = MCi._update_image_classifier(
-                    image_classifier=self.model.head, projection_dim=self.projection_dim
-                )
+        if self.projection_dim is not None and hasattr(self.model, "head"):
+            self.model.head = MCi._update_image_classifier(
+                image_classifier=self.model.head, projection_dim=self.projection_dim
+            )
 
     def forward(self, x: Any, *args, **kwargs) -> Any:
         """A forward function of the model."""

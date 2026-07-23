@@ -163,6 +163,8 @@ class MixUp(torch.nn.Module):
             p: Mixing is applied with probability `p`. Defaults to 1.0.
             div_by: Divide the lambda by a constant. Set to 2.0 to make sure mixing is biased towards the first input.
                 Defaults to 1.0.
+            *args: Additional positional module arguments.
+            **kwargs: Additional keyword module arguments.
         """
         super().__init__(*args, **kwargs)
         assert alpha >= 0
@@ -233,6 +235,9 @@ class CutMix(torch.nn.Module):
 
         Args:
             alpha: The alpha parameter to the Beta for producing a mixing lambda.
+            p: Probability of applying CutMix.
+            *args: Additional positional module arguments.
+            **kwargs: Additional keyword module arguments.
         """
         super().__init__(*args, **kwargs)
         assert alpha >= 0

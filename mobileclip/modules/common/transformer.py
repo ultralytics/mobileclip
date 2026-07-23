@@ -33,15 +33,17 @@ class LayerNormFP32(nn.LayerNorm):
         *args,
         **kwargs,
     ):
+        """Initialize layer normalization that computes in FP32."""
         super().__init__(
+            *args,
             normalized_shape=normalized_shape,
             eps=eps,
             elementwise_affine=elementwise_affine,
-            *args,
             **kwargs,
         )
 
     def forward(self, x: Tensor) -> Tensor:
+        """Normalize in FP32 and restore the input dtype."""
         # Convert input from dtype X to FP32 and perform normalization operation.
         # This may help with underflow/overflow issues that we typically see with normalization layers
         inp_dtype = x.dtype
@@ -49,6 +51,7 @@ class LayerNormFP32(nn.LayerNorm):
 
 
 def get_normalization_layer(norm_type, num_features):
+    """Create a normalization layer by name."""
     if norm_type == "layer_norm":
         return nn.LayerNorm(num_features)
     elif norm_type == "layer_norm_fp32":
@@ -58,6 +61,8 @@ def get_normalization_layer(norm_type, num_features):
 
 
 class PositionalEmbedding(nn.Module):
+    """Wrap learnable positional embeddings."""
+
     def __init__(
         self,
         num_embeddings: int,
@@ -68,23 +73,26 @@ class PositionalEmbedding(nn.Module):
         *args,
         **kwargs,
     ):
+        """Initialize positional embeddings."""
         super().__init__()
         # Add other pos embedding here and logic to choose between them
         module = LearnablePositionalEmbedding
 
         self.pos_embed = module(
+            *args,
             num_embeddings=num_embeddings,
             embedding_dim=embedding_dim,
             padding_idx=padding_idx,
             interpolation_mode=interpolation_mode,
-            *args,
             **kwargs,
         )
 
     def forward(self, seq_len: int, *args, **kwargs) -> Tensor:
+        """Return positional embeddings for a sequence length."""
         return self.pos_embed(seq_len, *args, **kwargs)
 
     def __repr__(self):
+        """Return the wrapped embedding representation."""
         return self.pos_embed.__repr__()
 
 
@@ -100,6 +108,7 @@ class LearnablePositionalEmbedding(nn.Module):
         *args,
         **kwargs,
     ):
+        """Initialize learnable positional embeddings."""
         super().__init__()
         self.pos_embed = nn.Parameter(torch.empty(1, 1, num_embeddings, embedding_dim))
         self.embedding_dim = embedding_dim
@@ -110,12 +119,14 @@ class LearnablePositionalEmbedding(nn.Module):
         self.reset_parameters()
 
     def reset_parameters(self) -> None:
+        """Initialize positional embedding parameters."""
         nn.init.trunc_normal_(self.pos_embed, mean=0, std=self.embedding_dim**-0.5)
         if self.padding_idx is not None:
             with torch.no_grad():
                 self.pos_embed[:, :, self.padding_idx, ...] = 0.0
 
     def forward(self, seq_len: int, *args, **kwargs) -> Tensor:
+        """Resize and return positional embeddings for a sequence length."""
         # scale pos embedding
         pos_embed = self.pos_embed
         if self.padding_idx is not None:
@@ -133,11 +144,12 @@ class LearnablePositionalEmbedding(nn.Module):
         return pos_embed.reshape(1, seq_len, self.embedding_dim)
 
     def __repr__(self):
+        """Return a concise embedding representation."""
         return f"{self.__class__.__name__}(num_embeddings={self.num_embeddings}, embedding_dim={self.embedding_dim}, padding_idx={self.padding_idx})"
 
 
 class MultiHeadAttention(nn.Module):
-    """This layer applies a multi-head self- or cross-attention as described in `Attention is all you need
+    """Apply multi-head self- or cross-attention as described in `Attention is all you need
     <https://arxiv.org/abs/1706.03762>`_ paper.
 
     Args:
@@ -164,6 +176,7 @@ class MultiHeadAttention(nn.Module):
         *args,
         **kwargs,
     ) -> None:
+        """Initialize attention projections and scaling."""
         if output_dim is None:
             output_dim = embed_dim
         super().__init__()
@@ -185,6 +198,7 @@ class MultiHeadAttention(nn.Module):
         self.use_separate_proj_weight = embed_dim != output_dim
 
     def __repr__(self):
+        """Return a concise attention representation."""
         return f"{self.__class__.__name__}(head_dim={self.head_dim}, num_heads={self.num_heads}, attn_dropout={self.attn_dropout.p})"
 
     def _forward_impl(
@@ -194,6 +208,7 @@ class MultiHeadAttention(nn.Module):
         key_padding_mask: Tensor | None = None,
         attn_mask: Tensor | None = None,
     ) -> Tensor:
+        """Apply self- or cross-attention."""
         # [N, S, C]
         b_sz, S_len, _in_channels = x_q.shape
 
@@ -292,6 +307,7 @@ class MultiHeadAttention(nn.Module):
         *args,
         **kwargs,
     ) -> Tensor:
+        """Apply multi-head self- or cross-attention."""
         # [Batch , Sequence, Hidden_dim]
         return self._forward_impl(
             x_q=x_q,
@@ -302,7 +318,7 @@ class MultiHeadAttention(nn.Module):
 
 
 class TransformerEncoder(nn.Module):
-    """This class defines the pre-norm `Transformer encoder <https://arxiv.org/abs/1706.03762>`_.
+    """Define the pre-norm `Transformer encoder <https://arxiv.org/abs/1706.03762>`_.
 
     Args:
         embed_dim: :math:`C_{in}` from an expected input of size :math:`(N, P, C_{in})`.
@@ -333,6 +349,7 @@ class TransformerEncoder(nn.Module):
         *args,
         **kwargs,
     ) -> None:
+        """Initialize attention, feed-forward, and stochastic-depth layers."""
         super().__init__()
 
         # Build attention layer
@@ -379,6 +396,7 @@ class TransformerEncoder(nn.Module):
         self.norm_type = transformer_norm_layer
 
     def __repr__(self) -> str:
+        """Return a concise encoder representation."""
         return f"{self.__class__.__name__}(embed_dim={self.embed_dim}, ffn_dim={self.ffn_dim}, dropout={self.std_dropout}, ffn_dropout={self.ffn_dropout}, stochastic_dropout={self.stochastic_dropout}, attn_fn={self.attn_fn_name}, act_fn={self.act_fn_name}, norm_fn={self.norm_type})"
 
     def forward(
@@ -390,15 +408,16 @@ class TransformerEncoder(nn.Module):
         *args,
         **kwargs,
     ) -> Tensor:
+        """Apply pre-normalized attention and feed-forward residuals."""
         # Multi-head attention
         res = x
         x = self.pre_norm_mha[0](x)  # norm
         x = self.pre_norm_mha[1](
+            *args,
             x_q=x,
             x_kv=x_prev,
             key_padding_mask=key_padding_mask,
             attn_mask=attn_mask,
-            *args,
             **kwargs,
         )  # mha
 

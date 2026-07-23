@@ -7,10 +7,10 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Any, Optional, Tuple, Union
+from typing import Any
 
 import torch
-import torch.nn as nn
+from torch import nn
 from torchvision.transforms import (
     CenterCrop,
     Compose,
@@ -51,7 +51,8 @@ def create_model_and_transforms(
     # Get config from yaml file
     if not os.path.exists(model_cfg_file):
         raise ValueError(f"Unsupported model name: {model_name}")
-    model_cfg = json.load(open(model_cfg_file))
+    with open(model_cfg_file) as file:
+        model_cfg = json.load(file)
 
     # Build preprocessing transforms for inference
     resolution = model_cfg["image_cfg"]["image_size"]
@@ -85,13 +86,15 @@ def create_model_and_transforms(
 
 
 def get_tokenizer(model_name: str) -> nn.Module:
+    """Create the tokenizer configured for a MobileCLIP model."""
     # Config files
     root_dir = os.path.dirname(os.path.abspath(__file__))
     configs_dir = os.path.join(root_dir, "configs")
     model_cfg_file = os.path.join(configs_dir, model_name + ".json")
 
     # Get config from yaml file
-    model_cfg = json.load(open(model_cfg_file))
+    with open(model_cfg_file) as file:
+        model_cfg = json.load(file)
 
     # Build tokenizer
     text_tokenizer = ClipTokenizer(model_cfg)

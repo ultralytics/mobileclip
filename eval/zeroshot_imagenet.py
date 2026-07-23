@@ -20,6 +20,7 @@ import mobileclip
 
 
 def parse_args(parser):
+    """Add MobileCLIP evaluation arguments to a parser."""
     parser.add_argument(
         "--model-arch",
         type=str,
@@ -37,6 +38,7 @@ def parse_args(parser):
 
 
 def create_model(model_arch, model_path):
+    """Create an evaluation model, transform, and device."""
     device = "cuda" if torch.cuda.is_available() else "cpu"
     torch.manual_seed(0)
 
@@ -49,6 +51,7 @@ def create_model(model_arch, model_path):
 
 
 def create_webdataset(task, transform, data_root=None, dataset_len=None, batch_size=64, num_workers=4):
+    """Create a WebDataset and its evaluation data loader."""
     data_folder = f"wds_{task.replace('/', '-')}_test"
     if data_root is None:
         data_root = f"https://huggingface.co/datasets/djghosh/{data_folder}/tree/main"

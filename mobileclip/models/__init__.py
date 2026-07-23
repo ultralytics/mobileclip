@@ -5,8 +5,12 @@
 # Copyright (C) 2024 Apple Inc. All rights reserved.
 #
 from .mci import (
-    mci0,
-    mci1,
-    mci2,
+    mci0 as mci0,
 )
-from .vit import vit_b16
+from .mci import (
+    mci1 as mci1,
+)
+from .mci import (
+    mci2 as mci2,
+)
+from .vit import vit_b16 as vit_b16

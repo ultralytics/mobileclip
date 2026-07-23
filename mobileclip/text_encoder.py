@@ -21,7 +21,10 @@ from mobileclip.modules.text.repmixer import RepMixerBlock
 
 
 class TextTransformer(nn.Module):
+    """Encode token sequences with a Transformer or RepMixer stack."""
+
     def __init__(self, cfg: dict, projection_dim: int, *args, **kwargs) -> None:
+        """Initialize token embeddings, encoder layers, and projection."""
         super().__init__()
 
         model_dim = cfg["dim"]
@@ -164,6 +167,8 @@ class TextTransformer(nn.Module):
             key_padding_mask: a tensor of boolean values as the padding mask of shape [batch_size, context_length]
             return_all_tokens: a boolean flag to return all tokens, defaults to False to return only EOT token
                 embedding.
+            *args: Additional positional encoder arguments.
+            **kwargs: Additional keyword encoder arguments.
 
         Returns:
             A tensor of [batch_size, context_length, hidden_dim] if return_all_tokens is
@@ -206,13 +211,14 @@ class TextTransformer(nn.Module):
         *args,
         **kwargs,
     ) -> Tensor:
+        """Encode text tokens and return projected features."""
         # Image-text pair data with single caption
         # [B, CL] --> [B, d]
         text_tokens = self.encode_text(
+            *args,
             text_tokens=text_tokens,
             key_padding_mask=key_padding_mask,
             return_all_tokens=return_all_tokens,
-            *args,
             **kwargs,
         )
         return text_tokens

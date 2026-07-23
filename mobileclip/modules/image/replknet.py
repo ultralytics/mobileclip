@@ -5,9 +5,11 @@
 # Copyright (C) 2024 Apple Inc. All rights reserved.
 #
 
+from __future__ import annotations
+
 import torch
-import torch.nn as nn
 from timm.models.layers import SqueezeExcite
+from torch import nn
 
 __all__ = ["ReparamLargeKernelConv"]
 
@@ -31,7 +33,7 @@ class ReparamLargeKernelConv(nn.Module):
         small_kernel: int,
         inference_mode: bool = False,
         use_se: bool = False,
-        activation: nn.Module = nn.GELU(),
+        activation: nn.Module | None = None,
     ) -> None:
         """Construct a ReparamLargeKernelConv module.
 
@@ -43,6 +45,7 @@ class ReparamLargeKernelConv(nn.Module):
             groups: Group number. Default: 1
             small_kernel: Kernel size of small kernel conv branch.
             inference_mode: If True, instantiates model in inference mode. Default: ``False``
+            use_se: Whether to enable squeeze-and-excitation.
             activation: Activation module. Default: ``nn.GELU``
         """
         super().__init__()
@@ -51,7 +54,7 @@ class ReparamLargeKernelConv(nn.Module):
         self.groups = groups
         self.in_channels = in_channels
         self.out_channels = out_channels
-        self.activation = activation
+        self.activation = nn.GELU() if activation is None else activation
 
         self.kernel_size = kernel_size
         self.small_kernel = small_kernel
