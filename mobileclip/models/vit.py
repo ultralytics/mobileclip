@@ -161,9 +161,8 @@ class ConvNormAct(nn.Module):
 
 
 class VisionTransformer(nn.Module):
-    """Define the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model
-    implementation is inspired from `Early Convolutions Help Transformers See
-    Better <https://arxiv.org/abs/2106.14881>`_.
+    """Define the `Vision Transformer architecture <https://arxiv.org/abs/2010.11929>`_. Our model implementation is
+    inspired from `Early Convolutions Help Transformers See Better <https://arxiv.org/abs/2106.14881>`_.
 
     .. note::
         Our implementation is different from the original implementation in two ways:
