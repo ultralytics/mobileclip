@@ -28,7 +28,7 @@ struct BytePair: Hashable {
     static func == (lhs: BytePair, rhs: BytePair) -> Bool {
         return lhs.a == rhs.a && lhs.b == rhs.b
     }
-    func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {  // codespell:ignore inout
         hasher.combine(a)
         hasher.combine(b)
     }

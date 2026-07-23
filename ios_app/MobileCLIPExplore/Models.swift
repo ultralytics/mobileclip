@@ -29,7 +29,7 @@ public struct ModelConfiguration: Identifiable, Hashable {
         lhs.name == rhs.name
     }
 
-    public func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {  // codespell:ignore inout
         hasher.combine(name)
     }
 }
