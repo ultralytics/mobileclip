@@ -10,6 +10,6 @@ This repository was initially released to accompany a research paper and promote
 - All contributions are licensed under the [LICENSE](LICENSE).
 - Please review and follow our [Code of Conduct](CODE_OF_CONDUCT.md) to help maintain a welcoming and respectful environment.
 
-For additional guidance on contributing best practices, refer to the [Ultralytics open-source contributing guidelines](https://docs.ultralytics.com/help/contributing/). If you have questions or need support, visit the [Ultralytics Forums](https://community.ultralytics.com/) or join the [Ultralytics Discord community](https://discord.com/invite/ultralytics).
+For additional guidance on contributing best practices, refer to the [Ultralytics open-source contributing guidelines](https://docs.ultralytics.com/help/contributing). If you have questions or need support, visit the [Ultralytics Forums](https://community.ultralytics.com) or join the [Ultralytics Discord community](https://discord.com/invite/ultralytics).
 
 We appreciate your efforts and look forward to your contributions!

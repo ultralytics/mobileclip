@@ -22,7 +22,7 @@ To build a positive and productive community, we expect all participants to:
 - Publishing others' private information (such as physical or electronic addresses) without explicit permission
 - Any other conduct which could reasonably be considered inappropriate in a professional setting
 
-For more guidance on positive open source communities, refer to the [Ultralytics contributing guidelines](https://docs.ultralytics.com/help/contributing/) and explore [open source best practices](https://opensource.guide/).
+For more guidance on positive open source communities, refer to the [Ultralytics contributing guidelines](https://docs.ultralytics.com/help/contributing) and explore [open source best practices](https://opensource.guide/).
 
 ## Our Responsibilities
 
@@ -30,13 +30,13 @@ Project maintainers are responsible for clarifying standards of acceptable behav
 
 Maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that do not align with this Code of Conduct. They may also ban, temporarily or permanently, any contributor for behaviors deemed inappropriate, threatening, offensive, or harmful.
 
-To learn more about project governance, visit [Ultralytics project governance](https://docs.ultralytics.com/help/CI/) and [community support resources](https://docs.ultralytics.com/help/FAQ/).
+To learn more about project governance, visit [Ultralytics project governance](https://docs.ultralytics.com/help/CI) and [community support resources](https://docs.ultralytics.com/help/FAQ).
 
 ## Scope
 
 This Code of Conduct applies to all project spaces, including online platforms and in-person events. It also applies when an individual is representing the project or its community in public spaces. Examples of representation include using an official project email address, posting via an official social media account, or acting as an appointed representative at an event. Project maintainers may further define and clarify representation as needed.
 
-For more information on project spaces and representation, see the [Ultralytics community guidelines](https://docs.ultralytics.com/help/code-of-conduct/).
+For more information on project spaces and representation, see the [Ultralytics community guidelines](https://docs.ultralytics.com/help/code-of-conduct).
 
 ## Enforcement
 
@@ -44,7 +44,7 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
 
-For additional support, visit the [Ultralytics help center](https://docs.ultralytics.com/help/) and review our [privacy policy](https://www.ultralytics.com/legal/privacy).
+For additional support, visit the [Ultralytics help center](https://docs.ultralytics.com/help) and review our [privacy policy](https://www.ultralytics.com/legal/privacy).
 
 ## Attribution
 
